@@ -1,0 +1,428 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_great_society.dry
+# Purpose: The Great Society deck — domestic legislation, the War on Poverty,
+#          Medicare, education, and what it costs to build something
+# =============================================================================
+
+# =============================================================================
+# CARD: The War on Poverty
+# =============================================================================
+
+@lbj_gs_poverty
+title: The Other America
+is-card: true
+card-image: img/poverty_card.png
+tags: lbj_country_card
+max-visits: 2
+
+Michael Harrington wrote a book. You read it. Or you read the summary; it was long. The point stands: thirty million Americans are poor in ways that the postwar prosperity has simply not touched.
+
+You want to end poverty. You have said you want to end poverty. The phrase "War on Poverty" is already in circulation from your State of the Union.
+
+The question is what, exactly, the war consists of.
+
+- @lbj_gs_poverty_oca: Create the Office of Economic Opportunity. Coordinate everything.
+- @lbj_gs_poverty_jobs: Focus on job training. Practical, defensible.
+- @lbj_gs_poverty_community: Community Action Programs. Local control.
+
+@lbj_gs_poverty_oca
+title: The Office of Economic Opportunity
+on-arrival: lbj_gs_progress += 1; lbj_poverty -= 8; lbj_capital -= 14; lbj_liberals += 6; lbj_labor += 4; lbj_far_right += 5; lbj_dixiecrats -= 4
+
+Sargent Shriver runs it. He is energetic in a way that slightly exhausts you.
+
+The programs proliferate: Head Start, VISTA, Job Corps, Legal Services, Community Action. They work unevenly, which critics call failure and which you call the nature of large-scale social programs.
+
+Congress will try to dismantle this for the next decade. Some of it will survive.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_gs_poverty_jobs
+title: Job Corps
+on-arrival: lbj_gs_progress += 1; lbj_poverty -= 5; lbj_capital -= 8; lbj_labor += 7; lbj_liberals += 3
+
+Job training is politically defensible. Teaching a man to work is not welfare; it is, as you put it in the speech, a hand up, not a handout.
+
+The Job Corps opens residential centers. Young men — mostly young men, mostly Black and brown young men from cities and rural hollows — come through and come out the other side with skills and sometimes with jobs.
+
+The program is more limited than you wanted. It is also more durable.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_gs_poverty_community
+title: Maximum Feasible Participation
+on-arrival: lbj_gs_progress += 1; lbj_poverty -= 6; lbj_capital -= 10; lbj_liberals += 8; lbj_dixiecrats -= 6; lbj_unity -= 3
+
+The Community Action Programs will require, by law, "maximum feasible participation" of the poor themselves. This seems reasonable, even democratic.
+
+What it means in practice is that poor people in cities begin organizing, demanding things, running for things, making themselves politically visible in ways that the city machines did not anticipate.
+
+Mayor Daley calls you. He is not pleased. Several other mayors call. None of them are pleased.
+
+You explain to them that this is democracy. They explain to you that this is not what they understood democracy to mean.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: Medicare
+# =============================================================================
+
+@lbj_gs_medicare
+title: Medicare
+is-card: true
+card-image: img/medicare_card.png
+tags: lbj_country_card
+view-if: lbj_ev_medicare = 0
+max-visits: 2
+
+Harry Truman proposed national health insurance in 1949. The AMA called it socialized medicine and killed it.
+
+You are going to try something smaller: health insurance for the elderly and the poor. Medicare and Medicaid, funded through Social Security. Wilbur Mills, who chairs Ways and Means and is not always your friend, is, on this issue, moveable.
+
+The AMA is still calling it socialized medicine.
+
+- @lbj_gs_medicare_sign: Push it through. Sign it in Independence, Missouri — in front of Truman.
+- @lbj_gs_medicare_compromise: Negotiate with the AMA. Get something.
+- @lbj_gs_medicare_delay: Other priorities first.
+
+@lbj_gs_medicare_sign
+title: Independence, Missouri
+on-arrival: lbj_ev_medicare = 1; lbj_gs_progress += 2; lbj_capital -= 16; lbj_liberals += 10; lbj_labor += 8; lbj_poverty -= 10; lbj_approval += 5; lbj_far_right += 6
+
+You fly to Independence, Missouri. You sign the bill in front of Harry Truman, who is eighty years old and has waited his whole political life for this. You hand him the first two Medicare cards.
+
+He cries. You are not going to mention that part, but he does.
+
+Eighteen million Americans will be covered in the first year. The number will grow.
+
+The AMA is furious. They will get over it, or they won't, and it won't matter, because the program will be too popular to repeal.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_gs_medicare_compromise
+title: Working with the AMA
+on-arrival: lbj_ev_medicare = 1; lbj_gs_progress += 1; lbj_capital -= 10; lbj_liberals += 5; lbj_poverty -= 6
+
+The bill that passes is less generous than what you wanted, more generous than what the AMA wanted. Both sides call it a compromise, which means both sides lost something.
+
+Fourteen million Americans are covered. The number grows more slowly.
+
+Truman gets his card in the mail like everyone else.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_gs_medicare_delay
+title: Not This Session
+on-arrival: lbj_liberals -= 5; lbj_labor -= 3; lbj_capital += 5
+
+The votes were there. They will be harder to find next year.
+
+You have a list of things you've delayed. The list is getting long.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: The Education Act
+# =============================================================================
+
+@lbj_gs_education
+title: Federal Aid to Education
+is-card: true
+card-image: img/education_card.png
+tags: lbj_country_card
+max-visits: 2
+
+Federal aid to public schools has been blocked for decades — by the Catholic Church (opposed to funding public but not parochial schools), by segregationists (opposed to any federal involvement that might come with desegregation strings), and by conservatives (opposed on principle).
+
+You have found a formula that threads the needle: aid follows the child, not the school. Parochial schools benefit. Segregated districts are eligible but only if they're making progress.
+
+It is a compromise. It is also, potentially, transformational.
+
+- @lbj_gs_education_push: Make it a priority. This changes the country in a generation.
+- @lbj_gs_education_quiet: Pass it quietly. Big claims draw big opposition.
+
+@lbj_gs_education_push
+title: A Generation
+on-arrival: lbj_gs_progress += 1; lbj_capital -= 12; lbj_liberals += 7; lbj_poverty -= 5; lbj_dixiecrats -= 3; lbj_approval += 3
+
+The Elementary and Secondary Education Act passes. You sign it in the one-room schoolhouse in Stonewall, Texas where you first went to school, next to your first teacher.
+
+One billion dollars for public education, most of it going to low-income districts. Head Start in every state. Books in schools that have never had enough books.
+
+The effects will take a generation to measure. That is, you tell yourself, the nature of the right investments.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_gs_education_quiet
+title: Quietly Done
+on-arrival: lbj_gs_progress += 1; lbj_capital -= 8; lbj_liberals += 4; lbj_poverty -= 3
+
+The bill passes without ceremony. This is sometimes the best way.
+
+The money goes out. The schools get it. The results are real and unspectacular, which is how most of history's most important things work.
+
+- @lbj_main_hand: Back to the Oval Office
+
+
+# =============================================================================
+# FILE: lbj_factions.dry (incorporated here for build simplicity)
+# Purpose: Faction management — pinned cards and deck cards
+#          for managing Dixiecrats, liberals, labor, far right
+# =============================================================================
+
+# =============================================================================
+# PINNED CARD: The Democratic Coalition
+# =============================================================================
+
+@lbj_faction_status
+title: The Coalition
+is-pinned-card: true
+card-image: img/coalition_card.png
+tags: lbj_party_card
+
+The New Deal coalition is a coalition of people who don't like each other very much and have temporarily agreed to be in the same room.
+
+[? if lbj_dixiecrats < 35 : The Southern Democrats are not in the room anymore. Russell is speaking in full sentences about the Solid South being history. You have done this. You know you've done this. The 1964 Civil Rights Act did more to realign American politics than anything since the New Deal. ?]
+
+[? if lbj_liberals < 35 : The liberal wing — your wing, in theory — is organizing against you. McCarthy is running. Kennedy may run. The base is going. ?]
+
+[? if lbj_labor < 40 : George Meany is not returning your calls. This is alarming. Labor is the spine of the party's ground game. Without them you are a coalition in name only. ?]
+
+[? if lbj_far_right > 65 : George Wallace is running. He is serious. He is pulling working-class whites in places the Democrats assumed were safe. The math of 1968 is getting complicated. ?]
+
+**Dixiecrats:** [+ lbj_dixiecrats +] · **Liberals:** [+ lbj_liberals +] · **Labor:** [+ lbj_labor +] · **Far Right:** [+ lbj_far_right +] ↑bad
+
+- @lbj_faction_status: *(Review coalition)*
+
+# =============================================================================
+# CARD: Richard Russell
+# =============================================================================
+
+@lbj_faction_russell
+title: Senator Russell
+is-card: true
+card-image: img/russell_card.png
+tags: lbj_party_card
+max-visits: 4
+
+He is the most powerful man in the Senate and your mentor and the primary obstacle to everything you are trying to do on civil rights, and you love him in the complicated way of political men who have been in the same foxhole for twenty years.
+
+He is not going to change. He is seventy-something years old and he has been wrong about the most important question in American life since 1948 and he is not going to change.
+
+What you can manage is the relationship — what he does with his votes, what he tells his colleagues about you.
+
+- @lbj_faction_russell_charm: Work the relationship. Separate the man from his position.
+- @lbj_faction_russell_confront: Tell him you're going ahead without him.
+- @lbj_faction_russell_favor: Do him a favor. Pick up a chit.
+
+@lbj_faction_russell_charm
+title: The Treatment
+on-arrival: lbj_dixiecrats += 5; lbj_capital -= 5; lbj_south_backlash -= 3; lbj_continuity_hints += 1
+
+You give him the treatment. You call it that yourself, privately — the full Johnson treatment, which involves a level of physical proximity and sustained personal attention that most men find difficult to resist.
+
+You talk about Texas. You talk about his family. You talk around the things you disagree on and through the things you agree on.
+
+He doesn't change his vote. But he doesn't actively campaign against you this week, and in Senate terms that is a form of friendship.
+
+Before you leave, he mentions — in the way he mentions things he wants on record between you — that he has heard some things from some people at the Pentagon that he didn't entirely understand. He says it might be worth asking Clifford about.
+
+You ask what kind of things.
+
+He says he'd rather not say. He shakes your hand.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_faction_russell_confront
+title: Without You
+on-arrival: lbj_dixiecrats -= 10; lbj_credibility += 4; lbj_liberals += 5; lbj_south_backlash += 8
+
+You tell him directly: you are going to do this with or without the Southern bloc, and you are going to win, and he is going to be on the wrong side of history, and the question is whether he wants to be a senator who opposed it or one who at least stood aside.
+
+He is not angry. He is sad, which is worse.
+
+He tells you that you are making a mistake you won't be able to take back.
+
+You know he means several things by that.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_faction_russell_favor
+title: A Favor
+on-arrival: lbj_dixiecrats += 8; lbj_capital -= 10; lbj_credibility -= 2
+
+You do him a favor. It is a specific, transactional favor of the kind that Senate relationships are made of. You do not say what it is in any document.
+
+He does you a favor in return. You do not say what it is either.
+
+The coalition holds a little longer.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: George Wallace
+# =============================================================================
+
+@lbj_faction_wallace
+title: Wallace
+is-card: true
+card-image: img/wallace_card.png
+tags: lbj_party_card
+view-if: lbj_year >= 1966
+max-visits: 3
+
+George Wallace is doing something that is going to matter and that your people don't fully understand yet. He is going to Wisconsin — Wisconsin, which is supposed to be solid — and he is getting thirty percent in the primary polls. He is not running against you on race, technically. He is running against busing, against crime, against big government, against the federal courts. He is running against a feeling.
+
+The feeling is real. You know it's real because you're from the South, and you can read it in letters you're not showing your staff.
+
+- @lbj_faction_wallace_ignore: Ignore him. He's a regional candidate.
+- @lbj_faction_wallace_absorb: Move toward his voters. Adjust the message.
+- @lbj_faction_wallace_confront: Confront the backlash directly. Name it.
+
+@lbj_faction_wallace_ignore
+title: Regional Politics
+on-arrival: lbj_far_right += 8; lbj_dixiecrats -= 5; lbj_unity -= 4
+
+He runs well enough to matter in 1968. You will be telling yourself you should have taken him more seriously.
+
+The voters he is reaching are not coming back. The coalition your father's generation built is ending, and you can see the ending happening, and you are not sure what to do about it that doesn't involve betraying everything you've spent your presidency trying to build.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_faction_wallace_absorb
+title: The Message
+on-arrival: lbj_far_right -= 5; lbj_liberals -= 8; lbj_unity -= 3; lbj_credibility -= 4; lbj_dixiecrats += 4
+
+You adjust. You talk more about crime. You talk more about order. You find ways to signal to the working-class white voters that you hear them.
+
+The left calls you a sellout. The Wallace voters are not fully persuaded anyway. You have managed to annoy everyone without solving the problem.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_faction_wallace_confront
+title: Call It What It Is
+on-arrival: lbj_far_right += 5; lbj_liberals += 8; lbj_credibility += 5; lbj_dixiecrats -= 8; lbj_unity -= 5
+
+You call it what it is. In a speech you write yourself — you draft the critical paragraph at the kitchen table at the ranch — you name the thing Wallace is doing and refuse to pretend it's something else.
+
+The liberals love it. The Wallace voters are confirmed in their opposition. The middle wonders which side you're on.
+
+You are on the side of the thing you said. You believe that. You also believe that believing it is not enough.
+
+- @lbj_main_hand: Back to the Oval Office
+
+
+# =============================================================================
+# FILE: lbj_endings.dry (incorporated here)
+# All endings except lbj_ending_coup (in lbj_conspiracy.dry)
+# =============================================================================
+
+@lbj_ending_collapse
+title: The Breaking Point
+new-page: true
+
+There are days when countries break.
+
+Not all at once. Not in a single dramatic moment, despite what the history books will tell your grandchildren. Countries break the way bodies do — a slow accumulation of pressures, small failures of load-bearing structures, and then a day when something that was weight-bearing is simply gone and the whole thing shifts.
+
+The year — [+ lbj_year +] — will be taught in schools as the year the postwar American consensus ended. They will argue about what ended it: the war, the cities, the assassinations, the failure of institutions, the credibility gap, the fractures in the party. They will all be right, partially.
+
+What they will not quite capture is the specific feeling of standing in the Oval Office in the months before it became clear, watching the instruments, knowing what the numbers meant, and not being able to find the decision that fixed it.
+
+There was no such decision. That is the hardest thing a president can learn.
+
+**[ENDING: THE BREAKING POINT — The Country Comes Apart]**
+
+- @start: Play again
+
+@lbj_ending_repudiation
+title: No Confidence
+new-page: true
+
+At some point, a president who has lost the country's trust is simply a man in a building.
+
+The approval numbers — you have never not known the approval numbers, not for a single day of your presidency — have fallen past the point where they measure popularity and into the territory where they measure something else. Legitimacy. The basic willingness of a democracy to accept the decisions of the person it elected.
+
+[? if lbj_credibility < 30 : They don't believe what you say. Not as a partisan matter — not just Republicans, not just the movement left — but as a simple factual matter. The credibility gap became, quietly, an assumption. You are assumed to be lying until proven otherwise. Governing under that assumption is like trying to build a house while someone is taking the foundation apart. ?]
+
+You govern out your term. The historical assessments vary. Most of them are not kind.
+
+You go home to the Pedernales.
+
+**[ENDING: NO CONFIDENCE — A Presidency Hollowed Out]**
+
+- @start: Play again
+
+@lbj_ending_vietnam_quagmire
+title: The Mekong Delta
+new-page: true
+
+History will not remember what you built. History will remember the war.
+
+That is perhaps unfair. The Great Society programs — Medicare, the Voting Rights Act, federal education funding, Head Start, a hundred other programs — will outlast you and will quietly improve the lives of tens of millions of Americans in ways that are difficult to attribute because they are structural. The counterfactual does not exist. You cannot see what poverty looks like without Medicare. You cannot see what American democracy looks like without the Voting Rights Act. So history cannot see it either, and what history cannot see, history cannot credit.
+
+What history can see is the body count. The footage. Cronkite saying *stalemate.* The boys.
+
+In some future decade, they will build a wall in Washington with [+ lbj_casualties +]-times-a-thousand names on it. You will not live to see it. You know it's coming.
+
+You should have found the way out earlier. You know that too.
+
+**[ENDING: THE WAR — Vietnam Consumes Everything]**
+
+- @start: Play again
+
+@lbj_ending_survived
+title: January 20, 1969
+new-page: true
+
+Richard Nixon places his hand on the Bible.
+
+You watch. Lady Bird watches. The January cold is specific and biting in the way of Washington cold, which has none of the drama of Texas cold but plenty of the unpleasantness.
+
+You are sixty years old. You have been president for five years and fifty-seven days. You will live four more years and die at the ranch, alone, in the late afternoon, of a heart attack you had been expecting since 1955.
+
+But that is later. Right now you are watching Nixon take the oath.
+
+[? if lbj_gs_progress >= 5 : The Great Society is law. Most of it will survive. The programs you built — Medicare, Medicaid, the education acts, the housing legislation, Head Start — will be attacked and underfunded and occasionally dismantled at the margins, but the core will hold. Fifty years from now, Americans will receive Medicare as if it has always existed, which is the best thing you can say about a government program: that it becomes invisible because it becomes necessary. ?]
+
+[? if lbj_cr_progress >= 3 : The Civil Rights Act. The Voting Rights Act. Whatever else the history books take from you, they cannot take those. You said *we shall overcome* in front of a joint session of Congress and you meant it and the legislation was real and the people who needed it most knew it was real. ?]
+
+[? if lbj_vietnam >= 60 : The war is still going. Nixon inherits it. He will say he has a plan. You know he doesn't. But it is his problem now. That is not comfort. It is just fact. ?]
+
+[? if lbj_vietnam < 40 : The war is winding down. Not quickly, not cleanly, but the numbers are going the right direction. You wish you had found this exit earlier. You wish a lot of things. ?]
+
+The Marine helicopter lifts off from the Capitol lawn. You and Lady Bird fly back to Texas.
+
+*You go home.*
+
+**[ENDING: JANUARY 20, 1969 — The Weight Lifted]**
+
+- @start: Play again
+
+@lbj_ending_great_society
+title: What Gets Built
+new-page: true
+
+You will be remembered for the Great Society. Not only for the Great Society — the war is in there, the choices that couldn't be unmade, the credibility gap, the coalition that broke — but the Great Society will be there too, durable and large, the way big things are when they're built out of the right materials.
+
+Medicare. Medicaid. The Civil Rights Act. The Voting Rights Act. The Elementary and Secondary Education Act. The Fair Housing Act. Head Start. Public broadcasting. The National Endowment for the Arts. Clean air legislation. Clean water legislation. The Immigration Act that ended the national-origins quota system. The Older Americans Act. Food stamps.
+
+You did this. In five years. While a war was eating your attention and your budget and your political capital. While the country was coming apart in ways you could feel but not always see clearly.
+
+It will be a long time before anyone tries to build anything this large again. You suspect — you do not say this to anyone — that it may be a very long time indeed.
+
+But it's there. It's law. It exists in the world.
+
+Lady Bird says: *You are not the worst president we've had, Lyndon.*
+
+You say that is not the bar you were aiming for.
+
+She says: *But you cleared it. You cleared it by a lot.*
+
+**[ENDING: WHAT GETS BUILT — The Great Society Stands]**
+
+*This is the best ending. It requires: Great Society progress 7+, Civil Rights progress 3+, national unity 45+, and surviving to 1969.*
+
+- @start: Play again
+
