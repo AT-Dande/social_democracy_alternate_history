@@ -1,0 +1,76 @@
+title: Root Scene
+new-page: true
+go-to: start
+
+@start
+on-arrival: {!
+Q.lbj_approval = 72;
+Q.lbj_credibility = 76;
+Q.lbj_capital = 58;
+Q.lbj_unity = 49;
+Q.lbj_dixiecrats = 56;
+Q.lbj_liberals = 63;
+Q.lbj_labor = 70;
+Q.lbj_far_right = 24;
+Q.lbj_military = 40;
+Q.lbj_vietnam = 13;
+Q.lbj_casualties = 3;
+Q.lbj_antiwar = 7;
+Q.lbj_cr_progress = 0;
+Q.lbj_racial_tension = 57;
+Q.lbj_south_backlash = 28;
+Q.lbj_gs_progress = 0;
+Q.lbj_poverty = 64;
+Q.lbj_month = 11;
+Q.lbj_year = 1963;
+Q.lbj_turn = 0;
+Q.lbj_continuity = 7;
+Q.lbj_continuity_hints = 0;
+Q.lbj_paranoia = 31;
+Q.lbj_jfk_shadow = 78;
+Q.lbj_ev_tonkin = 0;
+Q.lbj_ev_cra64 = 0;
+Q.lbj_ev_election64 = 0;
+Q.lbj_ev_vra65 = 0;
+Q.lbj_ev_medicare = 0;
+Q.lbj_ev_dominican = 0;
+Q.lbj_ev_watts = 0;
+Q.lbj_ev_midterms66 = 0;
+Q.lbj_ev_sixday = 0;
+Q.lbj_ev_tet = 0;
+Q.lbj_ev_mlk = 0;
+Q.lbj_ev_rfk = 0;
+Q.lbj_ev_chicago = 0;
+Q.lbj_ev_czechoslovakia = 0;
+Q.lbj_ev_schedule_continuity = 0;
+Q.lbj_ev_clifton_memo = 0;
+Q.lbj_ev_clifton_brief = 0;
+Q.lbj_clifton_memo_turn = 0;
+!}
+new-page: true
+go-to: lbj_prologue
+
+@lbj_prologue
+title: Seven Days
+new-page: true
+
+= The Oval Office. November 29, 1963.
+
+One week. You have been President of the United States for one week.
+
+There is a rocking chair they haven't moved yet. Nobody has moved it. You haven't asked anyone to move it. The thing just sits there in the corner of your peripheral vision, and you have learned in seven days to simply not look at that corner of the room.
+
+The country is still in it — the grief, the shock, the specific American horror of a president shot in a motorcade on a Friday afternoon. The networks are still running black-and-white footage of the caisson. People are still not quite sure what to do with their hands.
+
+And here you are. Lyndon Baines Johnson. Sixth-generation Texan. Senate Majority Leader. Vice President. President. The line of succession doing what it does.
+
+The briefings have not stopped. McNamara on Vietnam. Bobby — Robert Kennedy, excuse me, the Attorney General — on everything, in that way of his, that way he has of looking at you like you took something that belonged to him. The CIA on Cuba, on the Soviets, on a dozen other things you cannot say out loud. Russell on the Hill. Daley on the party. The mail is running at thirty thousand letters a day, and ninety percent of them are people expressing condolences, and you are not sure if they know who they're sending them to.
+
+You have a country to run. You have a legislative agenda that was going nowhere under Kennedy. You have a war that is seventeen thousand advisors deep and getting worse. You have a civil rights movement that is not going to wait for anyone's grief to lift.
+
+You have a rocking chair in the corner of your office that nobody will move.
+
+*What kind of president are you going to be?*
+
+- @lbj_main_hand: Begin
+
