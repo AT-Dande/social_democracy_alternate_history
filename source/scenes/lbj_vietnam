@@ -1,0 +1,331 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_vietnam.dry
+# Purpose: Vietnam & Foreign Policy deck — escalation, McNamara, the draft,
+#          anti-war movement, and the impossible arithmetic of the war
+# =============================================================================
+
+# =============================================================================
+# PINNED CARD: The Vietnam Situation Board
+# =============================================================================
+
+@lbj_vietnam_board
+title: Vietnam
+is-pinned-card: true
+card-image: img/vietnam_board.png
+tags: lbj_vietnam_card
+
+[? if lbj_vietnam < 20 : Seventeen thousand military advisors. The South Vietnamese are doing most of the fighting. McNamara says the metrics look encouraging. You are not sure McNamara is measuring the right things. ?]
+
+[? if lbj_vietnam >= 20 and lbj_vietnam < 45 : American combat troops are in country now. The commitment is deepening. The men are dying. McNamara has charts. ?]
+
+[? if lbj_vietnam >= 45 and lbj_vietnam < 70 : A half-million men. The largest military deployment since the Second World War. You do not say "quagmire." You do not say it because once you say it, it becomes the only word anyone uses. ?]
+
+[? if lbj_vietnam >= 70 : The war is consuming everything. The Great Society is bleeding into the Mekong Delta. You can hear it in the budget numbers. You can hear it in the streets. ?]
+
+**Escalation:** [+ lbj_vietnam +] · **Casualties:** [+ lbj_casualties +] · **Anti-War Anger:** [+ lbj_antiwar +]
+
+- @lbj_vietnam_board: *(Review situation)*
+
+# =============================================================================
+# SCRIPTED EVENT: Gulf of Tonkin, August 1964
+# =============================================================================
+
+@lbj_ev_tonkin_trigger
+title: The Gulf of Tonkin
+on-arrival: lbj_ev_tonkin = 1
+go-to: lbj_ev_tonkin_scene
+
+@lbj_ev_tonkin_scene
+title: Two Attacks, or One, or None
+new-page: true
+
+McNamara is on the phone. It is 9:43 p.m.
+
+The USS Maddox was attacked two days ago. That is certain. Tonight, the Turner Joy is reporting a second attack — torpedoes in the water, enemy vessels. The captain of the Turner Joy is, McNamara says, very confident.
+
+You will learn later, after it is too late for learning to help, that the sonar operator on the Turner Joy was twenty-three years old and may have been tracking his own ship's wake.
+
+But that is later. Right now, McNamara is on the phone, the Joint Chiefs are ready, and Congress is asking what you're going to do.
+
+What you're going to do, you have already decided. The question is how clearly you've decided it.
+
+- @lbj_tonkin_resolution: Request a blank-check resolution from Congress.
+- @lbj_tonkin_limited: Respond proportionally without the resolution.
+- @lbj_tonkin_investigate: Wait. Verify the second attack before acting.
+
+@lbj_tonkin_resolution
+title: The Resolution
+on-arrival: lbj_vietnam += 18; lbj_military -= 8; lbj_capital += 5; lbj_credibility -= 8; lbj_coup -= 3; lbj_antiwar += 5; lbj_casualties += 4
+
+The Gulf of Tonkin Resolution passes 98-2. Wayne Morse and Ernest Gruening vote no. You will not forget their names.
+
+You now have, effectively, a declaration of war without a declaration of war. The Joint Chiefs have plans. The plans involve numbers: troop numbers, sortie numbers, body count numbers.
+
+You tell yourself you will use it carefully. That is what everyone tells himself.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_tonkin_limited
+title: Measured Response
+on-arrival: lbj_vietnam += 8; lbj_military += 5; lbj_credibility -= 3; lbj_antiwar += 2; lbj_casualties += 2
+
+You authorize air strikes. Proportional. Controlled. You do not ask for a resolution.
+
+You will need more authority later. You will get it. But for now, you have not handed Congress a blank check, and you have not handed the military a license.
+
+McNamara looks at you with something that might be respect, or might be patience.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_tonkin_investigate
+title: Verify First
+on-arrival: lbj_credibility += 6; lbj_military += 8; lbj_approval -= 3; lbj_antiwar -= 3; lbj_coup += 4
+
+You ask for another twelve hours. McNamara is unhappy. The Joint Chiefs are unhappy. The Republicans are calling you weak.
+
+What the additional hours reveal is ambiguous, which is its own kind of answer. You respond proportionally and do not claim certainty you don't have.
+
+The far right begins a murmur that you lack resolve. It will get louder.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: McNamara's Metrics
+# =============================================================================
+
+@lbj_vietnam_mcnamara
+title: McNamara's Numbers
+is-card: true
+card-image: img/mcnamara_card.png
+tags: lbj_vietnam_card
+max-visits: 5
+
+He comes in with the briefing book. He always comes in with the briefing book. Robert McNamara, Secretary of Defense, Ford Motor Company president, the man who brought statistical management to the Pentagon.
+
+The charts are excellent. The metrics are rigorous. The kill ratios are favorable. The pacification percentages are improving. The number of hamlets under South Vietnamese government control is up.
+
+You have a nagging feeling about the hamlets.
+
+- @lbj_mcnamara_trust: Accept the metrics. Escalate based on the data.
+- @lbj_mcnamara_probe: Push back. Ask the questions that aren't in the briefing book.
+- @lbj_mcnamara_westmoreland: Ask Westmoreland directly. Go around McNamara.
+
+@lbj_mcnamara_trust
+title: Trust the System
+on-arrival: lbj_vietnam += 7; lbj_military -= 3; lbj_casualties += 3; lbj_credibility -= 3; lbj_antiwar += 4
+
+You authorize the additional troop deployments McNamara's numbers support.
+
+The metrics continue to look good. The war does not appear to be ending.
+
+You have a meeting next month. The metrics will look good then too. This is beginning to feel like a particular kind of trap.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_mcnamara_probe
+title: Question the Numbers
+on-arrival: lbj_capital -= 6; lbj_military += 6; lbj_credibility += 4; lbj_coup += 2
+
+You ask about the hamlets. You ask how they are defining "under government control." You ask who is doing the counting.
+
+McNamara is too intelligent to be offended. He is also too committed to his own framework to take the question where it leads. He schedules a follow-up briefing.
+
+The follow-up briefing has better charts.
+
+You are beginning to understand that you are going to be here for a while.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_mcnamara_westmoreland
+title: The General's View
+on-arrival: lbj_vietnam += 5; lbj_military -= 6; lbj_coup += 4; lbj_casualties += 2
+
+Westmoreland tells you what you want to hear, but differently. The metrics are different. The conclusion is the same: more troops, more time, more resources, eventual success.
+
+You notice that his certainty does not diminish when you ask the harder questions. This is either the confidence of a man who knows what he's doing, or something else entirely.
+
+McNamara finds out you went around him. He doesn't say anything. He doesn't have to.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: The Draft
+# =============================================================================
+
+@lbj_vietnam_draft
+title: The Draft Notice
+is-card: true
+card-image: img/draft_card.png
+tags: lbj_vietnam_card
+view-if: lbj_vietnam >= 25
+max-visits: 3
+
+The numbers don't work without the draft. Westmoreland is asking for more men than volunteers can provide.
+
+Three hundred thousand young Americans will receive notices this year. They will go to Vietnam, or they will go to Canada, or they will go to college and get a deferment, or they will find a sympathetic doctor. The system of who goes and who doesn't is not, everyone understands, entirely fair.
+
+Nobody says this on the record.
+
+- @lbj_vietnam_draft_expand: Expand the draft. The war needs the men.
+- @lbj_vietnam_draft_lottery: Push for a lottery system. Make it fairer.
+- @lbj_vietnam_draft_deferments: Leave the deferment system as is.
+
+@lbj_vietnam_draft_expand
+title: More Men
+on-arrival: lbj_vietnam += 5; lbj_casualties += 5; lbj_antiwar += 10; lbj_liberals -= 6; lbj_labor -= 4; lbj_military -= 5; lbj_far_right -= 3
+
+The notices go out. The buses leave. The news from Vietnam is mixed, which McNamara says is better than it sounds.
+
+The campuses are going to get louder. You can hear it already.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_vietnam_draft_lottery
+title: The Lottery
+on-arrival: lbj_capital -= 8; lbj_antiwar -= 5; lbj_liberals += 4; lbj_credibility += 5; lbj_casualties += 3
+
+A lottery is at least honest. Your birthday goes into a drum. The unfairness becomes random rather than economic.
+
+The campuses are still angry. But the argument has changed slightly, and in politics, changing the argument is sometimes the best you can do.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_vietnam_draft_deferments
+title: As Is
+on-arrival: lbj_antiwar += 7; lbj_liberals -= 3; lbj_credibility -= 4; lbj_dixiecrats += 2; lbj_labor -= 3
+
+The sons of men who can afford doctors and college continue to avoid the war. The sons of men who cannot continue to go.
+
+The labor movement notices this before the press does. They will not say so at AFL-CIO meetings, but they are doing the arithmetic.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: De-escalation Window
+# =============================================================================
+
+@lbj_vietnam_deescalate
+title: The Way Out
+is-card: true
+card-image: img/deescalate_card.png
+tags: lbj_vietnam_card
+view-if: lbj_vietnam >= 30
+max-visits: 2
+
+Clark Clifford has been asking questions you don't like. The questions are: what does victory look like? How do you define it? How do you know when you've achieved it?
+
+Clifford is a hawk who has looked at the numbers and is starting to sound like a dove. This concerns you more than any protest.
+
+There is a window. The North Vietnamese are talking, in the way that parties who are not ready to stop fighting but are ready to talk talk. It would mean something, giving up something, to walk through it.
+
+- @lbj_vietnam_deescalate_yes: Begin winding down. Negotiate seriously.
+- @lbj_vietnam_deescalate_no: Stay the course. Withdrawal is surrender.
+- @lbj_vietnam_deescalate_secret: Begin secret back-channel talks.
+
+@lbj_vietnam_deescalate_yes
+title: Begin the Exit
+on-arrival: lbj_vietnam -= 15; lbj_antiwar -= 12; lbj_liberals += 10; lbj_military += 15; lbj_coup += 8; lbj_credibility -= 5; lbj_far_right += 10; lbj_unity += 4
+
+You announce a halt to the bombing. You say you are ready to negotiate. The doves call it courage. The hawks call it surrender. The North Vietnamese send negotiators to Paris.
+
+The talks go slowly. The war does not end overnight. But the trajectory has changed, and you feel it in the briefing room — a different kind of tension, the tension of men who thought they had more time.
+
+Certain generals are quieter than usual in the weeks that follow.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_vietnam_deescalate_no
+title: Stay the Course
+on-arrival: lbj_vietnam += 5; lbj_antiwar += 8; lbj_military -= 5; lbj_casualties += 5; lbj_credibility -= 6; lbj_liberals -= 8
+
+You are not going to be the president who lost Vietnam. You have said this to yourself in the mirror. You have said it to Lady Bird, who has not responded in the way you hoped.
+
+The war continues. The metrics continue to look promising. The body counts continue.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_vietnam_deescalate_secret
+title: Paris Back Channel
+on-arrival: lbj_capital -= 10; lbj_credibility -= 2; lbj_antiwar -= 4; lbj_coup += 3; lbj_coup_hints += 1
+
+Averell Harriman flies to Paris with instructions he does not write down.
+
+The conversations happen. They are slow. They are deniable. They are real.
+
+Someone at State is asking why the Paris station's cable traffic has increased. It's the kind of question that gets asked by someone who is either doing their job or something else.
+
+You don't pursue it.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# SCRIPTED EVENT: Tet Offensive, February 1968
+# =============================================================================
+
+@lbj_ev_tet_trigger
+title: Tet
+on-arrival: lbj_ev_tet = 1; lbj_vietnam += 5; lbj_antiwar += 22; lbj_credibility -= 20; lbj_unity -= 12; lbj_military += 10; lbj_approval -= 15; lbj_liberals -= 10
+go-to: lbj_ev_tet_scene
+
+@lbj_ev_tet_scene
+title: Tet, 1968
+new-page: true
+
+On the Vietnamese New Year, the North Vietnamese and Viet Cong launch simultaneous attacks on more than a hundred cities and towns across South Vietnam. They attack the American Embassy in Saigon. The fighting goes on for weeks.
+
+Militarily, it is a failure for them. Westmoreland will say this. McNamara will say this.
+
+On television, it looks like something else.
+
+Walter Cronkite goes to Vietnam. He comes back and says, on the CBS Evening News, that the war appears to be a stalemate. Six months ago, your administration was telling America the war was being won.
+
+Sixty percent of Americans trust Walter Cronkite. You know the number. You have always known the number.
+
+*"If I've lost Cronkite,"* you say to no one in particular, *"I've lost Middle America."*
+
+- @lbj_tet_respond_military: Respond militarily. Double down. Win the argument with results.
+- @lbj_tet_respond_reassess: Reassess. Clifford's questions start getting better answers.
+- @lbj_tet_respond_withdraw: Announce you will not run in 1968. Step aside.
+
+@lbj_tet_respond_military
+title: Fight Through It
+on-arrival: lbj_vietnam += 10; lbj_casualties += 8; lbj_antiwar += 10; lbj_credibility -= 8; lbj_military -= 5; lbj_unity -= 5
+
+You authorize Westmoreland's request for two hundred thousand more troops.
+
+The press covers the request as evidence that the war is going badly, which is, you have to admit, a reasonable interpretation.
+
+The credibility gap is no longer a gap. It is a canyon. People are using that word now — the credibility gap — in headlines.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_tet_respond_reassess
+title: Clifford's Review
+on-arrival: lbj_vietnam -= 8; lbj_antiwar -= 8; lbj_credibility += 4; lbj_liberals += 6; lbj_military += 8; lbj_coup += 5; lbj_unity += 3
+
+You ask Clifford to conduct a fundamental reassessment of the war. He does. He reports back what you suspected: there is no military path to the outcome you've been describing.
+
+The Joint Chiefs receive this news with a stillness that reminds you of something you can't quite name.
+
+You begin the long, halting process of withdrawal.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_tet_respond_withdraw
+title: March 31
+on-arrival: lbj_vietnam -= 12; lbj_antiwar -= 15; lbj_liberals += 8; lbj_approval += 6; lbj_unity += 5; lbj_military += 12; lbj_coup += 6; lbj_jfk_shadow -= 20
+new-page: true
+
+On the evening of March 31, 1968, you address the nation.
+
+You announce a unilateral halt to bombing over most of North Vietnam. You announce your intention to negotiate.
+
+And then: *"I shall not seek, and I will not accept, the nomination of my party for another term as your President."*
+
+Lady Bird is in the room. She looks relieved in a way she has been trying not to show for months.
+
+You are sixty years old. You are going home.
+
+- @lbj_main_hand: The final months
+
