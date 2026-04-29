@@ -1,0 +1,344 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_1968.dry
+# Purpose: The year everything broke. MLK, RFK, Chicago.
+#          Also: LBJ personal deck — the private man, the 2 a.m. decisions.
+# =============================================================================
+
+# =============================================================================
+# SCRIPTED EVENT: MLK Assassination, April 4, 1968
+# =============================================================================
+
+@lbj_ev_mlk_trigger
+title: Memphis
+on-arrival: lbj_ev_mlk = 1; lbj_racial_tension += 25; lbj_unity -= 15; lbj_liberals -= 8; lbj_far_right += 6; lbj_antiwar += 8
+go-to: lbj_ev_mlk_scene
+
+@lbj_ev_mlk_scene
+title: Memphis, April 4
+new-page: true
+
+The phone call comes at 8:20 p.m.
+
+Martin Luther King Jr. has been shot on the balcony of the Lorraine Motel in Memphis, Tennessee. He was there supporting striking sanitation workers. He is dead.
+
+You sit with this for a moment. You have known King for years. You have agreed with him on some things and argued with him on others and you are aware, in the specific way you are aware of things you don't examine too carefully, that the relationship between you was never simple.
+
+He was thirty-nine years old.
+
+The cities are about to burn. You can already hear it starting — the reports coming in from Chicago, from Washington, from Baltimore. You have to decide what to say before the fires spread, and what you say will matter, and there is nothing you can say that is sufficient.
+
+- @lbj_ev_mlk_respond_grace: Address the nation. Ask for peace. Make it personal.
+- @lbj_ev_mlk_respond_order: Mobilize the National Guard immediately. Order first.
+- @lbj_ev_mlk_respond_legislation: Announce you are pushing the Fair Housing Act in his name.
+
+@lbj_ev_mlk_respond_grace
+title: The Address
+on-arrival: lbj_racial_tension -= 6; lbj_unity += 4; lbj_liberals += 5; lbj_credibility += 3
+
+You speak for eleven minutes. You do not use a teleprompter.
+
+You say that America is shocked and saddened. You say that Martin Luther King dedicated his life to love and to justice between fellow human beings. You say that this is a time of national tragedy. You say you ask every citizen to reject the blind violence that has struck down Dr. King.
+
+Thirty-nine cities will have riots in the days that follow. Forty-six people will die. You walk the burning streets of Washington with aides who are frightened and you are not frightened exactly but you are something.
+
+The riots stop. The grief does not.
+
+- @lbj_main_hand: Continue
+
+@lbj_ev_mlk_respond_order
+title: National Guard
+on-arrival: lbj_racial_tension -= 4; lbj_unity -= 2; lbj_liberals -= 6; lbj_far_right -= 4; lbj_south_backlash -= 3
+
+You mobilize fifty-five thousand National Guard and Army troops in the days that follow. The fires go out. The streets quiet. It is described as restoring order. It is also described as an occupation.
+
+The photographs of soldiers on the steps of the Capitol building will circulate for years.
+
+Order is a form of something. Not peace. But order.
+
+- @lbj_main_hand: Continue
+
+@lbj_ev_mlk_respond_legislation
+title: In His Name
+on-arrival: lbj_cr_progress += 1; lbj_capital -= 14; lbj_liberals += 8; lbj_racial_tension -= 5; lbj_dixiecrats -= 7
+
+You call the Speaker within an hour of the announcement. You tell him the Fair Housing Act is going to the floor this week. You do not ask.
+
+It passes within a week. The Fair Housing Act of 1968, prohibiting discrimination in the sale and rental of most housing in the United States.
+
+You sign it on April 11. The pen is heavy.
+
+You say: *"We have passed many civil rights laws. They alone are not enough. Justice for all our people cannot wait."*
+
+You mean it. It is not enough. You mean that too.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# SCRIPTED EVENT: RFK Assassination, June 5, 1968
+# =============================================================================
+
+@lbj_ev_rfk_trigger
+title: Los Angeles
+on-arrival: lbj_ev_rfk = 1; lbj_unity -= 12; lbj_liberals -= 12; lbj_antiwar -= 5; lbj_approval -= 6; lbj_coup += 6; lbj_paranoia += 10
+go-to: lbj_ev_rfk_scene
+
+@lbj_ev_rfk_scene
+title: The Ambassador Hotel
+new-page: true
+
+Robert Francis Kennedy is shot in the pantry of the Ambassador Hotel in Los Angeles at 12:15 a.m., June 5, 1968. He has just won the California primary.
+
+He dies twenty-six hours later.
+
+You receive the news in the residence. Lady Bird is there. You do not say anything for a long time.
+
+You and Bobby Kennedy have not liked each other for years. This is well documented. The feelings were mutual and specific and rooted in a competition for a man who is now five years dead. None of that is what you feel right now.
+
+What you feel right now is the second political assassination in five years, the second Kennedy, and something underneath the grief that you do not examine directly — a question about what this country is, what it is becoming, whether the violence that took Dallas and Memphis and now Los Angeles is random or whether it has a logic to it that you cannot see from the inside.
+
+You do not say this to anyone.
+
+- @lbj_ev_rfk_address: Address the nation again.
+- @lbj_ev_rfk_commission: Create a commission on political violence.
+
+@lbj_ev_rfk_address
+title: Again
+on-arrival: lbj_unity += 3; lbj_credibility += 2
+
+You address the nation. You are good at this by now. You are tired of being good at this.
+
+You say the words. The country grieves. The country continues.
+
+- @lbj_main_hand: Continue
+
+@lbj_ev_rfk_commission
+title: Why
+on-arrival: lbj_capital -= 6; lbj_unity += 2; lbj_credibility += 3; lbj_coup -= 3
+
+You create the National Commission on the Causes and Prevention of Violence. You ask it to look at everything: political assassination, civil disorder, the culture of violence in American life.
+
+The commission will report back and say, carefully, that the country has a problem it cannot solve quickly. This is accurate and not particularly useful, but it is at least honest.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# SCRIPTED EVENT: Chicago 1968 Convention
+# =============================================================================
+
+@lbj_ev_chicago_trigger
+title: Chicago
+on-arrival: lbj_ev_chicago = 1; lbj_unity -= 10; lbj_liberals -= 15; lbj_antiwar -= 8; lbj_labor -= 5; lbj_credibility -= 8; lbj_far_right += 8
+go-to: lbj_ev_chicago_scene
+
+@lbj_ev_chicago_scene
+title: Grant Park, August 1968
+new-page: true
+
+The Democratic National Convention is in Chicago.
+
+Mayor Daley has the city locked down. Twenty-three thousand law enforcement. Barbed wire around the convention hall. The demonstrators are in Grant Park — ten, fifteen thousand of them — and they are chanting things and the police are moving on them with clubs and the television cameras are everywhere.
+
+Inside the hall, the delegates are nominating Hubert Humphrey, your Vice President, your loyal Hubert, who has spent four years defending policies he privately disagreed with because that is what loyalty required.
+
+The country is watching Grant Park. The country is watching the police. The country is watching itself.
+
+You are watching it from the White House. You chose not to attend your own party's convention.
+
+- @lbj_ev_chicago_condemn: Condemn the police violence publicly.
+- @lbj_ev_chicago_support: Support Daley. Order must be maintained.
+- @lbj_ev_chicago_silent: Say nothing. It is Daley's city.
+
+@lbj_ev_chicago_condemn
+title: Too Far
+on-arrival: lbj_liberals += 6; lbj_labor -= 6; lbj_far_right += 5; lbj_credibility += 4; lbj_unity -= 3
+
+You break with Daley. You say publicly that the use of force against peaceful demonstrators was excessive. Daley does not speak to you for three weeks.
+
+The statement matters to some people. It does not stop what is already happening.
+
+Humphrey loses in November. The question of whether your statement helped or hurt is not one the historians will agree on.
+
+- @lbj_main_hand: Continue
+
+@lbj_ev_chicago_support
+title: Law and Order
+on-arrival: lbj_labor += 3; lbj_liberals -= 12; lbj_far_right -= 5; lbj_credibility -= 8; lbj_unity -= 5
+
+You back Daley. Order, you say, must be maintained.
+
+The footage runs on television for days. Your backing of Daley runs alongside it.
+
+You will spend years explaining what you meant. You will not fully succeed.
+
+- @lbj_main_hand: Continue
+
+@lbj_ev_chicago_silent
+title: No Comment
+on-arrival: lbj_credibility -= 5; lbj_liberals -= 7; lbj_unity -= 4
+
+Your silence is read as endorsement by some and cowardice by others.
+
+Both interpretations have some evidence for them.
+
+- @lbj_main_hand: Continue
+
+
+# =============================================================================
+# THE PERSONAL DECK
+# LBJ as a man — the private decisions, the late nights, the cost
+# =============================================================================
+
+@lbj_personal_lady_bird
+title: Lady Bird
+is-card: true
+card-image: img/ladybird_card.png
+tags: lbj_personal_card
+max-visits: 5
+
+She is the only person in the world who tells you the truth directly and without an agenda.
+
+She does not do it publicly — she is too skilled a political partner for that. But in the residence, late, when the day has been the kind of day that the job produces with regularity, she says the things that need saying.
+
+Tonight she says: *"Lyndon. You look tired in a way that rest isn't going to fix."*
+
+You tell her you're fine.
+
+She waits.
+
+- @lbj_personal_ladybird_listen: Listen. Actually listen.
+- @lbj_personal_ladybird_deflect: Tell her what you always tell her: it's the job.
+
+@lbj_personal_ladybird_listen
+title: She's Right
+on-arrival: lbj_paranoia -= 5; lbj_capital += 3; lbj_approval += 1; lbj_jfk_shadow -= 5
+
+You stop. You sit down at the kitchen table in the residence and you actually listen to what she is telling you, which is: you are carrying too much of this inside. The war is in you. The deaths are in you. The decisions you've made that you can't take back are in you.
+
+She doesn't say any of this in so many words. She doesn't have to.
+
+You talk until past midnight. You sleep better than you have in weeks.
+
+In the morning the problems are all still there. But you are slightly more able to carry them.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_personal_ladybird_deflect
+title: It's the Job
+on-arrival: lbj_paranoia += 3; lbj_jfk_shadow += 3
+
+You say it's the job and you're fine and she should go to sleep.
+
+She goes to sleep. You stay up for another two hours reading cables.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: The 2 A.M. Call from Vietnam
+# =============================================================================
+
+@lbj_personal_2am
+title: 2 A.M.
+is-card: true
+card-image: img/phone_night_card.png
+tags: lbj_personal_card
+view-if: lbj_vietnam >= 20
+max-visits: 6
+
+The secure phone rings.
+
+It is the overnight military watch officer. A situation in the Delta. Numbers. You take the numbers down on a pad and you will throw the pad away in the morning.
+
+You have been doing this — getting up at 3 a.m. to take these calls — since the escalation began. You get up every night. Some nights there is nothing. Some nights there is something.
+
+You know the name of every man who dies in the first weeks. Later you cannot do this anymore. There are too many.
+
+- @lbj_personal_2am_numbers: Process it. Make the decisions. Go back to sleep.
+- @lbj_personal_2am_personal: Ask about the men. Specific men. Make it human.
+
+@lbj_personal_2am_numbers
+title: The Arithmetic
+on-arrival: lbj_vietnam -= 1; lbj_casualties += 1; lbj_paranoia += 2
+
+You take the numbers and you make the call and you go back to sleep.
+
+In the morning there will be other numbers. The process continues. You are managing a war the way you managed the Senate: one relationship, one phone call, one piece of leverage at a time.
+
+It is not the same. You are beginning to understand it is not the same.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_personal_2am_personal
+title: Their Names
+on-arrival: lbj_credibility += 2; lbj_paranoia -= 2; lbj_antiwar -= 1; lbj_capital -= 2
+
+You ask the watch officer to stay on the line. You ask him to tell you about the men in the report. Where they were from. What unit.
+
+He does. He is surprised, you can tell, but he does it.
+
+You write down the names. In the morning you will have your office find the next of kin. Not a form letter — you will sign notes personally. You cannot do this for everyone. You do it for these ones.
+
+Moyers finds out. He doesn't say anything. Later he will say something, to a journalist, about who you were when no one was watching.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: JFK's Shadow
+# =============================================================================
+
+@lbj_personal_jfk
+title: His Office Now
+is-card: true
+card-image: img/jfk_card.png
+tags: lbj_personal_card
+view-if: lbj_jfk_shadow > 40
+max-visits: 4
+
+It is still being called the Kennedy administration in some of the press. You read this and you file it. Kennedy's men are mostly still here — McNamara, Bundy, Rusk — and they look at you sometimes with an expression that is impossible to fully read but that you have become very good at approximately reading.
+
+You did not take this office the way a man wants to take an office. You know that. Everyone knows that.
+
+The question is whether you're going to spend your presidency apologizing for it or building something worth apologizing about.
+
+- @lbj_personal_jfk_embrace: Embrace the continuity. Build on what he started.
+- @lbj_personal_jfk_own: Make it your own. Enough with the Kennedy administration.
+- @lbj_personal_jfk_obsess: Let it drive you. Prove something.
+
+@lbj_personal_jfk_embrace
+title: Continuity
+on-arrival: lbj_jfk_shadow -= 10; lbj_liberals += 5; lbj_capital += 3; lbj_credibility += 2
+
+You call it what it is: you are continuing the work. The tax cut. The civil rights bill. The Alliance for Progress. You are not replacing Kennedy; you are completing him.
+
+This framing costs you something personally. It also gets you something politically. The Kennedy loyalists — and there are many — begin to see you as custodian rather than usurper. It is not affection, but it is less opposition.
+
+The rocking chair stays.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_personal_jfk_own
+title: President Johnson
+on-arrival: lbj_jfk_shadow -= 15; lbj_liberals -= 3; lbj_capital += 5; lbj_credibility += 3
+
+You begin the long process of making it your own. New people. New programs. The Great Society, which is yours — not continuation, but construction.
+
+Some of the Kennedy people leave. They leave gracefully; this is Washington and everyone understands transitions.
+
+The rocking chair is moved to the library.
+
+You feel, for the first time, that this is your office.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_personal_jfk_obsess
+title: Enough
+on-arrival: lbj_jfk_shadow += 5; lbj_paranoia += 6; lbj_credibility -= 3; lbj_approval -= 2; lbj_gs_progress += 1
+
+You cannot let it go. You are aware you cannot let it go. This awareness does not help.
+
+You push harder on the Great Society — harder than is politically wise, harder than your capital supports — because you are trying to prove something to a dead man and to the people who loved that dead man and to yourself.
+
+Some of what you build in this mode will be the best work of your presidency. Rage, sometimes, builds things.
+
+- @lbj_main_hand: Back to the Oval Office
+
