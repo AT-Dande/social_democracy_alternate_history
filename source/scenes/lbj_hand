@@ -1,0 +1,125 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_hand.dry
+# Purpose: Main Oval Office hand, time advancement, status display,
+#          monthly tick logic, and endgame condition checks
+# =============================================================================
+
+@lbj_main_hand
+title: The Oval Office
+is-hand: true
+new-page: true
+on-arrival: lbj_turn += 1; lbj_month += 1
+
+# --- TIME ROLLOVER ---
+# DendryNexus doesn't have native modulo, so we use cascading go-to for month rollover
+go-to: lbj_month_rollover
+
+@lbj_month_rollover
+title: Month Rollover
+go-to: lbj_month_rollover_year if lbj_month > 12
+go-to: lbj_tick_conspiracycheck
+
+@lbj_month_rollover_year
+title: Year Advance
+on-arrival: lbj_month = 1; lbj_year += 1
+go-to: lbj_tick_conspiracycheck
+
+# --- THE CONSPIRACY TICK ---
+# Runs every turn invisibly. Player never sees this scene.
+# Coup pressure adjusts based on political conditions.
+@lbj_tick_conspiracycheck
+title: [Internal]
+on-arrival: lbj_coup += 2 if lbj_credibility < 40; lbj_coup += 1 if lbj_vietnam > 60 and lbj_antiwar > 50; lbj_coup += 2 if lbj_unity < 25; lbj_coup -= 1 if lbj_approval > 65; lbj_coup -= 2 if lbj_credibility > 70; lbj_coup = 0 if lbj_coup < 0; lbj_paranoia += 1 if lbj_coup > 30; lbj_paranoia += 2 if lbj_coup > 60
+go-to: lbj_tick_events
+
+# --- SCRIPTED EVENT CHECK ---
+# Each month, check if a historical event should fire.
+@lbj_tick_events
+title: [Internal]
+go-to: lbj_ev_tonkin_trigger if lbj_year = 1964 and lbj_month = 8 and lbj_ev_tonkin = 0
+go-to: lbj_ev_cra64_trigger if lbj_year = 1964 and lbj_month = 7 and lbj_ev_cra64 = 0
+go-to: lbj_ev_watts_trigger if lbj_year = 1965 and lbj_month = 8 and lbj_ev_watts = 0
+go-to: lbj_ev_tet_trigger if lbj_year = 1968 and lbj_month = 2 and lbj_ev_tet = 0
+go-to: lbj_ev_mlk_trigger if lbj_year = 1968 and lbj_month = 4 and lbj_ev_mlk = 0
+go-to: lbj_ev_rfk_trigger if lbj_year = 1968 and lbj_month = 6 and lbj_ev_rfk = 0
+go-to: lbj_ev_chicago_trigger if lbj_year = 1968 and lbj_month = 8 and lbj_ev_chicago = 0
+go-to: lbj_endgame_check if lbj_year >= 1969
+go-to: lbj_status_display
+
+# --- ENDGAME CHECK ---
+@lbj_endgame_check
+title: [Internal]
+go-to: lbj_ending_coup if lbj_coup >= 100
+go-to: lbj_ending_collapse if lbj_unity < 10
+go-to: lbj_ending_repudiation if lbj_approval < 20
+go-to: lbj_ending_vietnam_quagmire if lbj_vietnam >= 95 and lbj_antiwar >= 90
+go-to: lbj_ending_great_society if lbj_gs_progress >= 7 and lbj_cr_progress >= 3 and lbj_unity >= 45
+go-to: lbj_ending_survived if lbj_year >= 1969
+
+# --- STATUS DISPLAY ---
+# This scene is the visual header of the hand. It displays the current state.
+@lbj_status_display
+title: The Oval Office
+go-to: lbj_main_hand
+
+# The actual hand display — shown above the card deck UI
+# DendryNexus renders this as the hand's header text.
+
+[+ lbj_month +]/[+ lbj_year +] · Day [+ lbj_turn +] of the Johnson Presidency
+
+---
+
+**National Unity:** [+ lbj_unity +] · **Approval:** [+ lbj_approval +] · **Credibility:** [+ lbj_credibility +]
+
+*Factions:* Dixiecrats [+ lbj_dixiecrats +] · Liberals [+ lbj_liberals +] · Labor [+ lbj_labor +] · Far Right [+ lbj_far_right +] ↑bad
+
+*Vietnam:* Escalation [+ lbj_vietnam +] · Anti-war Anger [+ lbj_antiwar +]
+
+*Progress:* Civil Rights [+ lbj_cr_progress +]/10 · Great Society [+ lbj_gs_progress +]/10 · Poverty [+ lbj_poverty +]
+
+[? if lbj_coup_hints >= 3 : *There have been [+ lbj_coup_hints +] incidents your security staff flagged as anomalous. You haven't asked for details.* ?]
+
+---
+
+# The hand lists these decks as choices:
+- @lbj_deck_vietnam: Vietnam & Foreign Policy
+- @lbj_deck_civilrights: Civil Rights
+- @lbj_deck_greatsociety: The Great Society
+- @lbj_deck_factions: Party & Factions
+- @lbj_deck_personal: The Man in the Office
+
+# =============================================================================
+# DECKS
+# =============================================================================
+
+@lbj_deck_vietnam
+title: Vietnam & Foreign Policy
+is-deck: true
+card-image: img/vietnam_deck.png
+tags: lbj_vietnam_card
+
+@lbj_deck_civilrights
+title: Civil Rights
+is-deck: true
+card-image: img/cr_deck.png
+tags: lbj_cr_card
+
+@lbj_deck_greatsociety
+title: The Great Society
+is-deck: true
+card-image: img/gs_deck.png
+tags: lbj_gs_card
+
+@lbj_deck_factions
+title: Party & Factions
+is-deck: true
+card-image: img/factions_deck.png
+tags: lbj_faction_card
+
+@lbj_deck_personal
+title: The Man in the Office
+is-deck: true
+card-image: img/personal_deck.png
+tags: lbj_personal_card
+
