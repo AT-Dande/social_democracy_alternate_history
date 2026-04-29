@@ -1,0 +1,115 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_events.dry
+# Purpose: Missing scripted event trigger scenes.
+#          These are the four scenes referenced in lbj_hand.dry
+#          that had no definitions elsewhere.
+#
+#   lbj_ev_cra64_trigger     Civil Rights Act, July 1964
+#   lbj_ev_election64_trigger 1964 landslide, November 1964
+#   lbj_ev_medicare_trigger  Medicare signing, July 1965
+#   lbj_ev_vra65_trigger     Voting Rights Act trigger wrapper
+# =============================================================================
+
+# =============================================================================
+# Civil Rights Act of 1964 — July 2, 1964
+# =============================================================================
+
+@lbj_ev_cra64_trigger
+title: July 2, 1964
+on-arrival: lbj_ev_cra64 = 1; lbj_cr_progress += 2; lbj_dixiecrats -= 14; lbj_liberals += 10; lbj_south_backlash += 14; lbj_racial_tension -= 10; lbj_credibility += 6; lbj_unity += 4; lbj_capital -= 10; lbj_jfk_shadow -= 8
+new-page: true
+
+The Civil Rights Act of 1964 passes the Senate 73 to 27 after a seventy-four day filibuster — the longest in Senate history.
+
+You sign it in the East Room. Television cameras. Five hundred guests. The pens go to the people who made it possible: King, Roy Wilkins, Whitney Young, John Lewis. You hand them out one by one.
+
+Russell watches the signing on television in his office. He does not attend.
+
+When the room clears you tell an aide — you will say this to several people over the years and it will get back to the press eventually — *"We have lost the South for a generation."*
+
+You mean the Democratic Party. You are not sure a generation is long enough.
+
+The Act prohibits discrimination based on race, color, religion, sex, or national origin. It covers employment, public accommodations, federally assisted programs. It is the most significant civil rights legislation since Reconstruction.
+
+It is not enough. You know it is not enough. The movement knows it. Tomorrow the work continues.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# The 1964 Election — November 3, 1964
+# The landslide. The window opening.
+# =============================================================================
+
+@lbj_ev_election64_trigger
+title: November 3, 1964
+on-arrival: lbj_ev_election64 = 1; lbj_approval += 12; lbj_capital += 25; lbj_liberals += 8; lbj_labor += 6; lbj_unity += 8; lbj_jfk_shadow -= 15; lbj_continuity -= 4; lbj_far_right -= 5
+new-page: true
+
+61.1 percent of the popular vote.
+
+Four hundred eighty-six electoral votes to fifty-two. You carry forty-four states. Goldwater carries his home state of Arizona and five states in the Deep South — states you knew you were going to lose, states you lost the moment you signed the Civil Rights Act, states you would lose again.
+
+The 89th Congress: sixty-eight Democratic senators, two hundred ninety-five Democratic representatives. The largest majority since Roosevelt's first term. The window is open. You have known since November 22nd, 1963 that windows close. You are going to move as fast as the institution allows.
+
+Lady Bird watches the returns with you. At some point after midnight she says: *"It's yours now, Lyndon. Really yours."*
+
+She means the presidency. She also means something else — that the question of legitimacy, of whether you were the real thing or a placeholder for a dead man, has been answered by sixty-one percent of the American people.
+
+You feel it. For one night you feel it completely.
+
+Tomorrow the work begins.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# Medicare — July 30, 1965
+# Independence, Missouri. In front of Harry Truman.
+# =============================================================================
+
+@lbj_ev_medicare_trigger
+title: Independence, Missouri
+on-arrival: lbj_ev_medicare = 1; lbj_gs_progress += 2; lbj_approval += 5; lbj_liberals += 8; lbj_labor += 6; lbj_poverty -= 10; lbj_capital -= 12; lbj_far_right += 5; lbj_dixiecrats -= 4
+new-page: true
+
+You fly to Independence, Missouri.
+
+Harry S. Truman is eighty-one years old. He proposed national health insurance in 1949. The American Medical Association called it socialized medicine and killed it. He has been waiting sixteen years.
+
+You sign the Medicare and Medicaid Act in the Truman Library with the thirty-third President of the United States sitting beside you. You hand him the first two Medicare cards — card number one for him, card number two for Bess.
+
+He cries. You are not going to mention that part, but he does.
+
+Eighteen million Americans over sixty-five will be covered in the first year. Medicaid will cover the poor regardless of age. The numbers will grow every year until the program is as permanent as the government itself — until people receive it the way they receive the weather, as simply a feature of the world.
+
+The AMA called it socialized medicine. You call it done.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# Voting Rights Act — August 6, 1965
+# Trigger wrapper. The scene itself is in lbj_civil_rights.dry.
+# This wrapper fires the flag and hands off to the signing scene.
+# =============================================================================
+
+@lbj_ev_vra65_trigger
+title: August 6, 1965
+on-arrival: lbj_ev_vra65 = 1
+go-to: lbj_ev_vra65_scene
+
+@lbj_ev_vra65_scene
+title: The Voting Rights Act
+new-page: true
+
+The Voting Rights Act passes the Senate 77 to 19.
+
+You sign it in the President's Room of the Capitol — the same room where Lincoln signed a bill freeing slaves pressed into Confederate service — with Martin Luther King in the room, with John Lewis in the room, with the leadership of the movement watching.
+
+The Act prohibits discriminatory voting practices. It provides for federal oversight of elections in states with a history of discrimination. It will add nearly a million Black voters to the rolls in the South within a year.
+
+Five days ago, you addressed a joint session of Congress and said *we shall overcome.* Tonight the words are law.
+
+Russell is not in the room.
+
+- @lbj_main_hand: Continue
+
