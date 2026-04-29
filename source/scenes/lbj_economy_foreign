@@ -1,0 +1,432 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_economy_foreign.dry
+# Purpose: Economic pressure (Guns & Butter) + Foreign Policy cards
+#
+# ECONOMY DESIGN NOTES:
+#   No visible economy variable. The pressure is felt, not measured.
+#   Vietnam escalation silently drains capital each turn (handled in
+#   lbj_hand.dry tick logic — add this to the monthly tick).
+#   These cards surface the economic reality as governing choices:
+#   inflation, the Fed, labor relations, the cost of it all.
+#
+#   Add to lbj_hand.dry tick:
+#     lbj_capital -= 1 if lbj_vietnam >= 30
+#     lbj_capital -= 2 if lbj_vietnam >= 60
+#     lbj_capital -= 1 if lbj_gs_progress >= 5
+#   (The squeeze is silent. The player feels it through capital running low.)
+#
+# FOREIGN POLICY DESIGN NOTES:
+#   These are Country deck cards, not a separate system.
+#   The player is responding to events they didn't choose.
+#   The choices are about posture, message, and the domestic fallout.
+#   Foreign policy is weather. Occasionally severe.
+# =============================================================================
+
+# =============================================================================
+# ECONOMY: THE GUNS AND BUTTER PROBLEM
+# =============================================================================
+
+@lbj_econ_inflation
+title: The Price of Everything
+is-card: true
+card-image: img/economy.png
+tags: lbj_country_card
+view-if: lbj_year >= 1966 and lbj_vietnam >= 30
+max-visits: 4
+on-arrival: lbj_labor -= 3; lbj_approval -= 2
+
+The inflation numbers are up again.
+
+They are not catastrophically up. They are uncomfortably up — the kind of up that shows up in grocery prices and gas prices and rent prices, the kind of up that working people notice before economists do.
+
+The cause is not mysterious. You are running a war and a domestic expansion simultaneously and you have not raised taxes to pay for either of them at the scale they require. The money has to come from somewhere. It is coming from the purchasing power of the dollar.
+
+William McChesney Martin at the Federal Reserve is looking at you with the expression of a man who has been saying something for two years that you have not wanted to hear.
+
+- @lbj_econ_inflation_fed: Work with the Fed. Let interest rates rise.
+- @lbj_econ_inflation_spend: Keep spending. Growth will solve it.
+- @lbj_econ_inflation_message: Manage the message. Voluntary price controls.
+
+@lbj_econ_inflation_fed
+title: Tight Money
+on-arrival: lbj_capital -= 8; lbj_labor -= 5; lbj_approval -= 3; lbj_gs_progress -= 1; lbj_credibility += 3
+
+You let Martin raise rates. The economy slows. Borrowing gets more expensive. Some of the Great Society programs get squeezed because the credit that funded them is now more expensive.
+
+The inflation moderates. This is the correct medicine. It is not popular medicine.
+
+Labor notices the slowdown before anyone else. Meany calls.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_inflation_spend
+title: Growth Solves It
+on-arrival: lbj_gs_progress += 1; lbj_labor += 3; lbj_approval += 2; lbj_credibility -= 4; lbj_capital -= 5
+
+You push back on Martin. Growth will absorb the inflation. The economy is strong. The fundamentals are sound.
+
+The inflation continues. The fundamentals remain sound. The grocery prices continue to rise.
+
+You are right about the growth and wrong about what follows from it, which is a frustrating position to be in.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_inflation_message
+title: Jawboning
+on-arrival: lbj_credibility -= 3; lbj_capital -= 3; lbj_approval -= 1
+
+You call the major corporations in. You ask for voluntary price restraint. You call it the right thing to do. You mean it.
+
+The voluntary price restraint is respected in approximately the way that voluntary restraints are always respected, which is variably and temporarily.
+
+The inflation continues at a slightly lower rate, which is something, though not quite what you needed.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: George Meany
+# AFL-CIO. Labor support is real but has limits.
+# =============================================================================
+
+@lbj_econ_meany
+title: Brother Meany
+is-card: true
+card-image: img/economy.png
+tags: lbj_country_card
+max-visits: 4
+
+George Meany has been president of the AFL-CIO since 1955. He is blunt in the manner of a man who has spent his career in rooms where bluntness is respected. He supports you — has supported you — and the support is real and organizational and worth more than most people understand.
+
+He also has demands. He always has demands. This is what it means to have labor's support: the support comes with an account that must be periodically maintained.
+
+Today he wants to talk about the minimum wage. About the right to organize in the South. About what the trade agenda is doing to manufacturing jobs. About whether the war is eating the money that was supposed to go to the cities.
+
+- @lbj_econ_meany_deliver: Deliver something concrete. Keep the account current.
+- @lbj_econ_meany_listen: Listen. Acknowledge. Buy time.
+- @lbj_econ_meany_trade: The trade agenda is not negotiable. Make the case.
+
+@lbj_econ_meany_deliver
+title: Keeping the Account
+on-arrival: lbj_labor += 8; lbj_capital -= 12; lbj_gs_progress += 1; lbj_approval += 2
+
+You give him something he can take back to the membership. Minimum wage increase. Strengthened NLRB enforcement. Something real.
+
+He accepts it with the dignity of a man who expected something and received it.
+
+Labor holds.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_meany_listen
+title: Good Meeting
+on-arrival: lbj_labor -= 2; lbj_capital -= 3
+
+Good meeting. Productive conversation. You will follow up on the specific items he raised. Your people will be in touch with his people.
+
+He knows what this means. He has been in these meetings for thirty years.
+
+Labor's support softens slightly, in the way of something that has not been fed.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_meany_trade
+title: The Long Game
+on-arrival: lbj_labor -= 6; lbj_capital -= 4; lbj_credibility += 2; lbj_approval -= 2
+
+You explain that the trade agenda creates jobs over the long term and that the specific disruptions he's worried about can be addressed with adjustment programs. You have numbers. The numbers are real.
+
+He listens to the numbers with the expression of a man hearing about the long term from someone who wants something in the short term.
+
+He leaves without endorsing your position.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Great Society's Price Tag
+# The hidden cost — Vietnam eating the domestic agenda.
+# =============================================================================
+
+@lbj_econ_squeeze
+title: The Arithmetic
+is-card: true
+card-image: img/economy.png
+tags: lbj_country_card
+view-if: lbj_vietnam >= 40 and lbj_gs_progress >= 3
+max-visits: 3
+on-arrival: lbj_capital -= 3; lbj_paranoia += 2
+
+Budget Director Charles Schultze has a chart.
+
+The chart shows two lines. One line is the projected cost of the Great Society programs at full funding. The other line is the projected cost of the war in Vietnam at current escalation levels. The lines cross in fiscal year 1967 and they do not uncross.
+
+Schultze is very careful about how he presents this. He does not say that you cannot do both. He says that doing both at current scales will require either a tax increase, a reduction in one of the two commitments, or an acceptance of structural deficits and the inflation that follows.
+
+He says this is a management problem with known solutions.
+
+You look at the chart for a long time.
+
+- @lbj_econ_squeeze_taxhike: Tax surcharge. Pay for both honestly.
+- @lbj_econ_squeeze_cut_war: Reduce the war commitment. The domestic agenda takes priority.
+- @lbj_econ_squeeze_cut_gs: Protect the war. Scale back the domestic agenda.
+- @lbj_econ_squeeze_defer: Defer the decision. The economy is strong.
+
+@lbj_econ_squeeze_taxhike
+title: Honest Arithmetic
+on-arrival: lbj_capital += 8; lbj_gs_progress += 1; lbj_credibility += 5; lbj_approval -= 4; lbj_labor -= 3; lbj_far_right += 3
+
+A ten percent income tax surcharge. It will cover the gap. It will be unpopular. It will be honest.
+
+Congress will fight it. Wilbur Mills will extract concessions. The eventual legislation will be narrower than you want. But the arithmetic will be addressed rather than deferred.
+
+The Great Society survives more or less intact. The war continues. The country pays for both.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_squeeze_cut_war
+title: Reorder Priorities
+on-arrival: lbj_vietnam -= 10; lbj_antiwar -= 8; lbj_capital += 12; lbj_gs_progress += 1; lbj_military += 10; lbj_continuity += 4; lbj_liberals += 6; lbj_approval += 3
+
+You reduce the war commitment. Begin winding down the escalation. The domestic agenda gets the resources it was promised.
+
+The Joint Chiefs receive this news with the stillness you have learned to read as something other than acceptance.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_squeeze_cut_gs
+title: War First
+on-arrival: lbj_gs_progress -= 2; lbj_poverty += 10; lbj_liberals -= 10; lbj_labor -= 6; lbj_capital += 8; lbj_approval -= 6
+
+You protect the war spending and reduce the domestic programs.
+
+The things that get cut are real. The programs that don't get funded are real. The people who needed them are real.
+
+You tell yourself it is temporary. You have been telling yourself a version of this for two years.
+
+- @lbj_main_hand: Continue
+
+@lbj_econ_squeeze_defer
+title: Strong Fundamentals
+on-arrival: lbj_credibility -= 4; lbj_capital -= 5; lbj_poverty += 5
+
+The economy is growing. Unemployment is low. These things are true.
+
+The structural problem does not go away because the economy is growing. It becomes a structural problem in a growing economy, which Schultze will point out in six months with an updated chart.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# FOREIGN POLICY CARDS
+# These live in The Country deck. Events, responses, posture.
+# =============================================================================
+
+# =============================================================================
+# SCRIPTED EVENT: The Dominican Republic, April 1965
+# =============================================================================
+
+@lbj_ev_dominican
+title: Santo Domingo
+is-card: true
+card-image: img/foreign.png
+on-arrival: lbj_ev_dominican = 1
+view-if: lbj_year = 1965 and lbj_month = 4 and lbj_ev_dominican = 0
+new-page: true
+
+There is a coup in the Dominican Republic.
+
+The previous government has been overthrown. There is fighting in the streets of Santo Domingo. There are, your advisors tell you, American citizens at risk. There is also, your advisors tell you, credible intelligence of communist involvement in the rebel faction.
+
+You have to decide in the next twelve hours whether to send in the Marines.
+
+The precedent is what worries you. You send in the Marines to a Latin American country and the headline writes itself: *LBJ Invades Caribbean Nation.* The legacy of gunboat diplomacy, which everyone in this hemisphere has not forgotten, is on the other side of this decision.
+
+But there are Americans at risk. And the intelligence about communist involvement is credible.
+
+- @lbj_dominican_intervene: Send in the Marines. Protect American lives.
+- @lbj_dominican_wait: Wait for more information. Don't move yet.
+- @lbj_dominican_oas: Work through the OAS. Multilateral response.
+
+@lbj_dominican_intervene
+title: The Johnson Doctrine
+on-arrival: lbj_military -= 5; lbj_antiwar += 8; lbj_liberals -= 7; lbj_credibility -= 5; lbj_approval -= 3; lbj_continuity -= 3; lbj_far_right -= 4
+
+Twenty-two thousand Marines and paratroopers. The largest American military intervention in Latin America since the 1920s.
+
+The Americans are evacuated. The communist threat, if it existed at the scale the intelligence suggested, does not materialize. Order is restored.
+
+The Latin American ambassadors are very polite when they come to register their concerns. Their governments issue statements. The phrase *"Yankee imperialism"* appears in the international press more than you would like.
+
+The anti-war movement has found a second argument.
+
+- @lbj_main_hand: Continue
+
+@lbj_dominican_wait
+title: More Information
+on-arrival: lbj_credibility += 3; lbj_liberals += 3; lbj_antiwar -= 3; lbj_continuity -= 2; lbj_approval += 1
+
+You ask for another twelve hours.
+
+In twelve hours the situation clarifies enough that a proportional response is possible. A smaller force. A more defensible rationale. The Americans are evacuated. The situation stabilizes.
+
+The conservatives call it weakness. The liberals call it prudence. The Latin American ambassadors are more comfortable with the outcome.
+
+- @lbj_main_hand: Continue
+
+@lbj_dominican_oas
+title: Multilateral
+on-arrival: lbj_credibility += 4; lbj_liberals += 5; lbj_antiwar -= 4; lbj_capital -= 8; lbj_approval += 2
+
+You work through the Organization of American States. Slower. More complicated. Genuinely multilateral.
+
+The OAS sends an inter-American force. The Americans are evacuated. Order is restored through a process that has regional legitimacy.
+
+The Latin American press is significantly more favorable. This will matter in ways that are hard to see right now and will be more visible later.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# SCRIPTED EVENT: The Six-Day War, June 1967
+# =============================================================================
+
+@lbj_ev_sixday
+title: The Hotline
+is-card: true
+card-image: img/foreign.png
+on-arrival: lbj_ev_sixday = 1; lbj_military += 4; lbj_continuity += 2
+view-if: lbj_year = 1967 and lbj_month = 6 and lbj_ev_sixday = 0
+new-page: true
+
+Israel has launched preemptive strikes against Egypt, Jordan, and Syria.
+
+You found out from the news, which is not how you prefer to find out about events of this magnitude. The intelligence community is scrambling. The State Department is scrambling. The hotline to Moscow is active.
+
+Six days from now, Israel will control the Sinai, the West Bank, the Golan Heights, and the Gaza Strip. The map of the Middle East will be permanently changed. None of this is yet known. What is known is that the war has started and the Soviets are watching and you have approximately three hours to decide what the American posture is.
+
+- @lbj_sixday_support: Support Israel. Make the American position clear.
+- @lbj_sixday_neutral: Call for a ceasefire from all parties. Stay neutral.
+- @lbj_sixday_hotline: Focus on the Soviets. Use the hotline to prevent escalation.
+
+@lbj_sixday_support
+title: American Position
+on-arrival: lbj_military -= 3; lbj_credibility += 2; lbj_approval += 2; lbj_antiwar += 4; lbj_continuity += 2
+
+You make the American position clear. You are not neutral. Israel is an ally.
+
+The Soviets receive this message through official channels. The war ends in six days. The Soviets do not intervene. The ceasefire holds.
+
+You have a substantially more complicated Middle East to manage for the rest of your presidency. The conditions of the new map will define American foreign policy for decades.
+
+- @lbj_main_hand: Continue
+
+@lbj_sixday_neutral
+title: All Parties
+on-arrival: lbj_credibility -= 2; lbj_liberals += 3; lbj_antiwar -= 2; lbj_approval -= 1
+
+You call for an immediate ceasefire from all parties. The Israelis do not observe it. The Arabs do not observe it. The war ends in six days.
+
+Your neutrality has made everyone slightly unhappy with you, which is sometimes what genuine neutrality looks like.
+
+- @lbj_main_hand: Continue
+
+@lbj_sixday_hotline
+title: The Hotline
+on-arrival: lbj_credibility += 4; lbj_military -= 2; lbj_continuity -= 2; lbj_approval += 1
+
+You are on the hotline to Kosygin within the hour.
+
+The conversation is careful. Both of you are trying to communicate that neither of you wants this to become a superpower confrontation. Both of you succeed in communicating this.
+
+The war ends in six days. The Soviets do not intervene. The hotline, used for the first time in a genuine crisis, works as designed.
+
+This is, you think, what diplomatic infrastructure is for.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# SCRIPTED EVENT: Czechoslovakia, August 1968
+# Warsaw Pact invasion. LBJ's options are extremely limited.
+# =============================================================================
+
+@lbj_ev_czechoslovakia
+title: Prague
+is-card: true
+card-image: img/foreign.png
+on-arrival: lbj_ev_czechoslovakia = 1; lbj_unity -= 4; lbj_credibility -= 5; lbj_approval -= 3; lbj_military += 6; lbj_continuity += 3
+view-if: lbj_year = 1968 and lbj_month = 8 and lbj_ev_czechoslovakia = 0
+new-page: true
+
+Soviet and Warsaw Pact tanks have entered Czechoslovakia.
+
+The Prague Spring — the liberalization experiment that Alexander Dubček has been running since January, the one your administration has been watching with cautious optimism — is over. The Soviets have decided they cannot tolerate a socialist state with a human face on their western border, and they have acted with the directness that is Brezhnev's particular quality.
+
+There is nothing you can do militarily. You are fighting a war in Southeast Asia. You have no appetite for a confrontation with the Soviet Union in Central Europe in an election year. NATO is watching. The Europeans are watching. The Czechs are watching from under Soviet tanks.
+
+What you can do is respond. The question is how loudly.
+
+- @lbj_czech_strong: Condemn it forcefully. Cancel planned summits.
+- @lbj_czech_moderate: Condemn it. Keep diplomatic channels open.
+- @lbj_czech_quiet: Respond quietly. Don't jeopardize arms control talks.
+
+@lbj_czech_strong
+title: Full Condemnation
+on-arrival: lbj_credibility += 4; lbj_military -= 5; lbj_approval += 2; lbj_continuity += 2; lbj_unity -= 3
+
+You cancel the planned summit with Kosygin. You give a strong public statement. You call the invasion a violation of international law and the UN Charter.
+
+The Soviets listen and continue the invasion. The tanks stay in Prague.
+
+You have said the right thing. The right thing has accomplished nothing material. This is the condition of great power politics when you are fighting a war elsewhere and cannot threaten a war here.
+
+The far right says you are weak. You say the alternative is nuclear war. Nobody is satisfied.
+
+- @lbj_main_hand: Continue
+
+@lbj_czech_moderate
+title: Calibrated Response
+on-arrival: lbj_credibility += 2; lbj_approval += 1; lbj_continuity += 1; lbj_unity -= 2
+
+You condemn the invasion clearly. You do not cancel the summit. You keep the diplomatic infrastructure intact.
+
+The tanks stay in Prague.
+
+You are navigating between allies who want you to do more and strategic interests that require you to do less. The navigation is imperfect. The tanks stay in Prague.
+
+- @lbj_main_hand: Continue
+
+@lbj_czech_quiet
+title: Strategic Patience
+on-arrival: lbj_credibility -= 4; lbj_liberals -= 4; lbj_approval -= 3; lbj_unity -= 4; lbj_continuity -= 2
+
+You make the calculation that arms control is more important than the statement. You respond quietly, through diplomatic channels, and keep the summit on the calendar.
+
+The Soviets appreciate the pragmatism. The tanks stay in Prague. The arms control talks continue.
+
+History will record both things: the pragmatism and the silence. You are not sure which it will judge more harshly.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: General Cold War Pressure
+# The ambient weight of nuclear superpower status.
+# =============================================================================
+
+@lbj_foreign_coldwar
+title: The Brief
+is-card: true
+card-image: img/foreign.png
+tags: lbj_country_card
+max-visits: 6
+on-arrival: lbj_paranoia += 1
+
+The morning intelligence brief.
+
+Today: Soviet submarine activity in the North Atlantic is up six percent from last month's baseline. The East Germans have made three additional modifications to the Berlin wall infrastructure. A North Korean patrol boat has crossed the DMZ. A Chinese nuclear test is expected within the next thirty days.
+
+None of this is a crisis. All of it is the permanent condition of being the leader of the free world, which is a phrase you use in public and find slightly uncomfortable in private because of what the word *free* is required to contain.
+
+You initial the brief and move on to the budget meeting.
+
+*(Background pressure. Nothing to decide.)*
+
+- @lbj_main_hand: Continue
+
