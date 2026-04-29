@@ -1,0 +1,447 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_conspiracy.dry
+# Purpose: The Seven Days mechanic.
+#
+# DESIGN NOTES:
+#   - coup_conspiracy (lbj_continuity) runs 0-100, hidden from player
+#   - Hint cards surface to the player's deck when lbj_continuity crosses thresholds
+#   - Each hint is written to be genuinely ambiguous — bureaucratic normality
+#     with something slightly wrong in it. DeLillo grammar.
+#   - The coup does not "happen" in any normal game. Sub-1% per turn
+#     once lbj_continuity > 70. Players who read carefully may piece together
+#     what the variables were tracking. Players who don't will simply
+#     have felt a low-frequency dread they can't quite name.
+#   - If it fires: lbj_ending_coup. An ending unlike the others.
+#
+# WHAT INCREASES lbj_continuity:
+#   - Low credibility (the generals read the papers)
+#   - Vietnam de-escalation while military pressure is high
+#   - National unity collapse (chaos creates opportunity)
+#   - Back-channel diplomacy that cuts around military command
+#   - LBJ appearing weak, indecisive, or politically terminal
+#   - Certain paranoia-adjacent choices
+#
+# WHAT DECREASES lbj_continuity:
+#   - High approval (legitimacy is the best defense)
+#   - High credibility
+#   - Keeping the military satisfied on Vietnam
+#   - Strength signaling
+# =============================================================================
+
+# =============================================================================
+# HINT TIER 1: lbj_continuity >= 15
+# The first whispers. Genuinely ignorable.
+# =============================================================================
+
+@lbj_hint_lemay_mood
+title: Briefing Room
+is-card: true
+card-image: img/pentagon_card.png
+tags: lbj_vietnam_card
+view-if: lbj_continuity >= 15 and lbj_continuity_hints < 3
+max-visits: 1
+on-arrival: lbj_continuity_hints += 1
+
+General LeMay is in excellent spirits at this morning's briefing. He has told a joke — not a good joke, but a joke, which is unusual for him. Afterward he shakes hands with two of the Joint Chiefs with the warmth of men concluding something.
+
+McNamara does not seem to notice. Or he notices and doesn't say so.
+
+The briefing is about logistics. The numbers are fine.
+
+*(You file this away without knowing quite why.)*
+
+- @lbj_main_hand: Continue
+
+@lbj_hint_unsigned_memo
+title: An Unsigned Memo
+is-card: true
+card-image: img/document_card.png
+tags: lbj_party_card
+view-if: lbj_continuity >= 18 and lbj_continuity_hints < 4
+max-visits: 1
+on-arrival: lbj_continuity_hints += 1; lbj_paranoia += 3
+
+A memo is in your briefing stack that no one has initialed. The routing slip is blank. It concerns contingency planning — a standard enough subject — but the parameters it assumes are not standard. It assumes, without stating it clearly, that certain command authorities might need to be exercised outside normal civilian oversight structures, under extreme circumstances of governmental incapacity.
+
+You read it twice.
+
+You call Jenkins. He comes in, reads it, and shreds it. Neither of you says what you're thinking. This is one of those situations in which saying a thing makes it more real.
+
+You have a 9 a.m. with the Budget Bureau.
+
+*(You go to your 9 a.m.)*
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# HINT TIER 2: lbj_continuity >= 30
+# Things that could have explanations. You notice you're looking for explanations.
+# =============================================================================
+
+@lbj_hint_russell_question
+title: Senator Russell
+is-card: true
+card-image: img/senate_card.png
+tags: lbj_faction_card
+view-if: lbj_continuity >= 30 and lbj_continuity_hints < 6
+max-visits: 1
+on-arrival: lbj_continuity_hints += 1; lbj_paranoia += 4
+
+Russell asks you, almost gently — Russell who has known you since the Senate, who taught you what he knew about power, who has disagreed with you on nearly everything for the past two years — if you have given any thought to your security detail.
+
+You ask him what he means.
+
+He says he's just asking. He's been reading some things. He mentions, briefly, a name you half-recognize — a general, a foreign posting, a year in the early sixties. He drops it.
+
+You tell him your security is fine. He nods in the way of a man who knew you were going to say that and wanted it on the record between you that he asked.
+
+You call the Secret Service director from your car.
+
+The director says everything is fine.
+
+*(Everything is fine.)*
+
+- @lbj_main_hand: Continue
+
+@lbj_hint_staff_change
+title: Personnel
+is-card: true
+card-image: img/staff_card.png
+tags: lbj_party_card
+view-if: lbj_continuity >= 35 and lbj_continuity_hints < 7
+max-visits: 1
+on-arrival: lbj_continuity_hints += 1; lbj_paranoia += 5
+
+Moyers tells you that General Wheeler's aide — the one you've seen at every briefing for two years, young man, good shoes, handshake too firm — has been reassigned. No notice. No explanation in the channels where explanations normally appear.
+
+The new aide is polite and efficient and has the specific quality of blankness that very good intelligence people sometimes cultivate.
+
+You ask Moyers why he's telling you.
+
+He says: *"I'm not sure."*
+
+You ask Hoover. Hoover says the reassignment was routine. Hoover always says things are routine. You have long since learned that what Hoover says and what Hoover knows are different ledgers.
+
+*(You have Lady Bird check the locks on the residence. You do not explain why.)*
+
+- @lbj_hint_callback: Make a note of this.
+- @lbj_hint_dismiss: Dismiss it. Aides get reassigned.
+
+@lbj_hint_callback
+title: A Note
+on-arrival: lbj_paranoia += 3; lbj_credibility -= 1
+
+You keep a list, mental, of the things that don't quite fit. The list is getting longer in ways you don't like.
+
+At some threshold this becomes paranoia, which is its own kind of madness. You are not sure where the threshold is.
+
+- @lbj_main_hand: Continue
+
+@lbj_hint_dismiss
+title: Let It Go
+on-arrival: lbj_continuity += 2
+
+Aides get reassigned. You have reassigned aides. This is bureaucratic life.
+
+You put it out of your mind. You are good at putting things out of your mind. It is one of the skills of the job.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# HINT TIER 3: lbj_continuity >= 50
+# The ambiguity starts thinning. The grammar gets stranger.
+# =============================================================================
+
+@lbj_hint_late_call
+title: 2 A.M.
+is-card: true
+card-image: img/phone_card.png
+tags: lbj_party_card
+view-if: lbj_continuity >= 50 and lbj_continuity_hints < 9
+max-visits: 1
+on-arrival: lbj_continuity_hints += 1; lbj_paranoia += 8; lbj_continuity -= 5
+
+The phone rings at 2:04 a.m. It is the secure line — not the main line, the secure line that only a specific set of people have the number for.
+
+You pick up.
+
+There is a pause on the other end. Not silence — you can hear the ambient sound of somewhere, an office or a car or something institutional. Then a voice you don't quite recognize says: *"The President should know that certain people are concerned about instability."*
+
+You ask who this is.
+
+The line goes dead.
+
+You lie there in the dark for forty minutes.
+
+In the morning you tell Moyers to find out whose voice that was. He comes back three days later and says he couldn't determine it. His face, when he says this, has something in it he's trying not to show you.
+
+You do not push.
+
+*(The concern about instability, whoever expressed it, is your own concern also. Maybe that's all it was. Someone calling to share a concern.)*
+
+- @lbj_hint_call_action: Take precautions. Talk to someone you trust.
+- @lbj_hint_call_ignore: Let it go. You're not going to lose sleep over a crank call.
+
+@lbj_hint_call_action
+title: Precautions
+on-arrival: lbj_paranoia += 5; lbj_capital -= 4; lbj_continuity -= 8; lbj_approval -= 2
+
+You make some calls of your own. Quiet ones. People who know things without being official about knowing things.
+
+Nobody tells you anything definitive. Several people tell you they've heard nothing unusual, in the specific way that people who have heard something say they've heard nothing.
+
+Your security detail is quietly doubled for two weeks. No announcement. No memo.
+
+Nothing happens. You tell yourself that the nothing that happens is evidence that either you were right to take precautions, or there was nothing to take precautions against. You cannot determine which.
+
+- @lbj_main_hand: Continue
+
+@lbj_hint_call_ignore
+title: Crank Call
+on-arrival: lbj_continuity += 4
+
+You've been getting crank calls since 1953. You go back to sleep.
+
+In the morning you feel fine. The briefings are normal. McNamara has good charts.
+
+*(You don't tell anyone about the call.)*
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# HINT TIER 4: lbj_continuity >= 70
+# Very rare. Unsettling in a way that's hard to process.
+# =============================================================================
+
+@lbj_hint_the_room
+title: The Room
+is-card: true
+card-image: img/corridor_card.png
+tags: lbj_party_card
+view-if: lbj_continuity >= 70 and lbj_continuity_hints < 10
+max-visits: 1
+on-arrival: lbj_continuity_hints += 1; lbj_paranoia += 12
+
+A Secret Service agent you don't recognize is standing in the corridor outside the Cabinet Room when you arrive for a 7 a.m. meeting.
+
+This is not unusual. The detail rotates.
+
+What is unusual is that when you look at him directly, he doesn't meet your eyes. Every agent meets your eyes. That's part of their training. The eye contact says: *I see the threat environment, I'm in it with you, we're doing this together.* He looks at the middle distance.
+
+You go into the meeting. It's about the budget. The meeting lasts two hours.
+
+When you come out, the agent is gone. Your regular detail is back. You describe the man to your lead agent, casually — tall, dark suit, didn't have a lapel pin now that you think about it — and watch your agent's face do something careful and controlled and very fast.
+
+Your agent says he'll look into it.
+
+He doesn't bring it up again.
+
+You don't ask.
+
+*(That evening, you call an old friend — someone from the Senate days, out of government now, someone who has spent time thinking about how power actually works in this country. You don't say what you're calling about. You talk about fishing for twenty minutes. Before you hang up, he says: "Lyndon, you should know you've got friends." You say of course you do. He says: "No. I mean you should know it.")*
+
+*(You're not sure what to do with that.)*
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# THE COUP ENDING
+# Fires if lbj_continuity reaches 100.
+# Written not as action-movie coup but as bureaucratic horror.
+# You are called to a meeting. The meeting does not go as expected.
+# History does not record what was said.
+# =============================================================================
+
+@lbj_ending_coup
+title: The Meeting
+new-page: true
+
+There is a meeting.
+
+The meeting is called by your Chief of Staff. It is described as a security briefing, which is ordinary enough. The location is the Situation Room, which is ordinary enough. The attendees list includes the Secretary of Defense, the Chairman of the Joint Chiefs, the National Security Advisor, and four men whose names are not on any list you have seen before.
+
+You attend the meeting.
+
+What happens in the meeting is not recorded in the minutes, because no minutes are taken. What is said is said in the room and remains in the room. What you understand, within the first several minutes, is the nature of the meeting.
+
+You are not chairing this meeting.
+
+---
+
+Later — weeks later, months later, in the version of events that the American public receives through channels that have been carefully considered — there will be an announcement. The announcement will be about your health. You have a heart condition; this is true, you have had a heart condition since 1955. The announcement will say that in the interest of the country's stability during a difficult period, certain temporary arrangements have been made. The word *temporary* will appear in the announcement seven times.
+
+The arrangements will not be temporary.
+
+---
+
+The men who made this decision believed they were saving the country. They may have been right. They may have been wrong. History is usually unable to adjudicate this kind of thing, because the people who would need to testify are the people with the most reason not to.
+
+What can be said is that the country did not rip itself apart. The war continued for several more years. The Great Society programs were largely dismantled. Order was maintained.
+
+The rocking chair in the corner of the Oval Office was eventually moved.
+
+---
+
+*A note: throughout your presidency, a set of variables ran in the background of every decision you made — accumulating, compounding, occasionally decreasing. You were never shown these numbers. Nobody in the game was. They tracked something that players who read carefully might have felt at the edges: a cold draft from under certain doors, a pause in a voice on the phone at 2 a.m., a security agent looking at the wrong thing.*
+
+*That variable reached 100.*
+
+*The next playthrough, it doesn't have to.*
+
+**[ENDING: THE MEETING — Seven Days in May]**
+
+**[Restart]**
+
+- @start: Play again
+
+
+# =============================================================================
+# THE SCHEDULE — Continuity hint card
+# Two versions: Valenti (pre-July 1966) and Watson (July 1966+)
+# Only one ever fires. Flag lbj_ev_schedule_continuity prevents both.
+#
+# Deck: lbj_party_card — lives among normal Party cards.
+# Title: "The Schedule" — used elsewhere as a mundane card title.
+#         Sometimes it means something. Sometimes it doesn't.
+# =============================================================================
+
+@lbj_schedule_continuity_valenti
+title: The Schedule
+is-card: true
+tags: lbj_party_card
+view-if: lbj_continuity >= 15 and lbj_ev_schedule_continuity = 0 and lbj_year >= 1965 and lbj_month >= 9 and lbj_year < 1966 or lbj_year = 1966 and lbj_month < 7
+max-visits: 1
+on-arrival: lbj_ev_schedule_continuity = 1
+
+The morning schedule has been updated. The 9 a.m. with the Budget Bureau is moved to 10. A placeholder has been added at 9 a.m.: Interagency Coordination — Continuity Planning. No attendees listed. The placeholder was added by the scheduling office at the request of the NSC. You have a 10 a.m. with the Budget Bureau.
+
+- @lbj_schedule_ask_valenti: Ask Valenti about it.
+- @lbj_schedule_attend: Attend the 9 a.m.
+- @lbj_schedule_skip: Move on. The Budget Bureau meeting stays at 9.
+
+@lbj_schedule_ask_valenti
+title: Ask Valenti
+on-arrival: lbj_paranoia += 5; lbj_continuity -= 3
+
+Valenti comes back twenty minutes later. He says the request came through the NSC liaison's office, standard interagency routing. He says he's confirmed it's on the books. He doesn't say who requested it originally. You don't ask if he looked.
+
+You go to the Budget Bureau meeting. The Budget Bureau meeting is about the Budget Bureau.
+
+- @lbj_main_hand: Continue
+
+@lbj_schedule_attend
+title: Attend the 9 a.m.
+on-arrival: lbj_paranoia += 6; lbj_continuity -= 2
+
+The meeting is in the Roosevelt Room. Seven people. Bundy you know. A man from State whose name you don't catch. Two uniformed officers — Army, neither of them anyone you recognize from the Joint Chiefs' staff. The agenda is continuity of government communications infrastructure. Bundy speaks for most of it. The two officers answer questions you don't ask. You are back in the Oval by 9:40.
+
+The Budget Bureau meeting is rescheduled for Thursday.
+
+- @lbj_main_hand: Continue
+
+@lbj_schedule_skip
+title: Move on.
+on-arrival: lbj_continuity += 3
+
+The Budget Bureau meeting runs from 9 to 10:15. Schultze has charts.
+
+By afternoon the placeholder is gone from the schedule record. You notice this because you went looking for something else entirely. You don't go looking for it specifically.
+
+- @lbj_main_hand: Continue
+
+# --- Watson version (July 1966 onward) ---
+
+@lbj_schedule_continuity_watson
+title: The Schedule
+is-card: true
+tags: lbj_party_card
+view-if: lbj_continuity >= 15 and lbj_ev_schedule_continuity = 0 and lbj_year >= 1966 and lbj_month >= 7
+max-visits: 1
+on-arrival: lbj_ev_schedule_continuity = 1
+
+The morning schedule has been updated. The 9 a.m. with the Budget Bureau is moved to 10. A placeholder has been added at 9 a.m.: Interagency Coordination — Continuity Planning. No attendees listed. The placeholder was added by the scheduling office at the request of the NSC. You have a 10 a.m. with the Budget Bureau.
+
+- @lbj_schedule_ask_watson: Ask Watson about it.
+- @lbj_schedule_attend: Attend the 9 a.m.
+- @lbj_schedule_skip: Move on. The Budget Bureau meeting stays at 9.
+
+@lbj_schedule_ask_watson
+title: Ask Watson
+on-arrival: lbj_paranoia += 5; lbj_continuity -= 3
+
+Watson comes back twenty minutes later. He says the request came through the NSC liaison's office, standard interagency routing. He says he's confirmed it's on the books. He doesn't say who requested it originally. You don't ask if he looked.
+
+You go to the Budget Bureau meeting. The Budget Bureau meeting is about the Budget Bureau.
+
+- @lbj_main_hand: Continue
+
+
+# =============================================================================
+# CLIFTON CARDS
+# General Chester Clifton — Military Aide to the President
+# Four appearances across the game. One completely normal.
+# One memo. One discrepancy. One optional.
+#
+# Flags:
+#   lbj_ev_clifton_memo     0/1   memo card has fired
+#   lbj_ev_clifton_brief    0/1   normal brief has fired
+#
+# All titled "The Brief" — a recurring card title used elsewhere
+# for completely unrelated briefings.
+# =============================================================================
+
+# =============================================================================
+# CARD 1: The normal one.
+# 1964. Clifton does his job. Nothing wrong.
+# =============================================================================
+
+@lbj_clifton_brief_normal
+title: The Brief
+is-card: true
+tags: lbj_party_card
+view-if: lbj_year >= 1964 and lbj_ev_clifton_brief = 0
+max-visits: 1
+on-arrival: lbj_ev_clifton_brief = 1
+
+General Clifton has the morning brief ready at 7:45. Fourteen pages. He walks you through the Vietnam section first — standard practice — then Korea, then Berlin. The casualty figures for the week are on page three. He waits while you read them. When you look up he moves to the next section. The meeting runs twenty-two minutes. He collects the documents when you're done and reminds you that McNamara is at nine.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD 2: The memo.
+# A military staffer reassigned. Clifton on the CC line.
+# Nothing else wrong.
+# =============================================================================
+
+@lbj_clifton_memo
+title: The Brief
+is-card: true
+tags: lbj_party_card
+view-if: lbj_year >= 1965 and lbj_ev_clifton_memo = 0 and lbj_ev_clifton_brief = 1
+max-visits: 1
+on-arrival: lbj_ev_clifton_memo = 1; lbj_clifton_memo_turn = lbj_turn
+
+General Clifton has the morning brief ready at 7:45. Eighteen pages today. The Vietnam section runs long — Westmoreland has submitted an updated assessment. On the last page, routed with the brief as a matter of record, is a personnel notice: Captain R.D. Carey, currently assigned to the NSC liaison staff, is being reassigned to the Frankfurt attaché office effective immediately. Standard reassignment notice. CC: WHCA, JCS Liaison, Clifton.
+
+You initial the brief and move on to the 9 a.m.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD 3: The discrepancy.
+# A real briefing. The wrong note surfaces almost incidentally.
+# =============================================================================
+
+@lbj_clifton_frankfurt
+title: The Brief
+is-card: true
+tags: lbj_party_card
+view-if: lbj_ev_clifton_memo = 1 and lbj_turn >= lbj_clifton_memo_turn + 2
+max-visits: 1
+on-arrival: lbj_continuity += 2; lbj_paranoia += 3
+
+General Clifton has the morning brief ready at 7:45. The Vietnam section first, then Korea, then Berlin. On page seven there is a routine update on attaché postings in Europe. You notice that the Frankfurt position — the one Carey was reassigned to in the spring — isn't listed. You turn the page. Clifton is already on the Berlin section.
+
+- @lbj_main_hand: Continue
+
