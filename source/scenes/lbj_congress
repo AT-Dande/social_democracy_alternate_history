@@ -1,0 +1,331 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_congress.dry
+# Purpose: Congressional relations — the art of the deal, the limits
+#          of the deal, and what happens when the deal runs out.
+#
+# DESIGN NOTES:
+#   LBJ was the greatest Senate operator of the 20th century.
+#   These cards should feel like that — the specific pleasure and
+#   cost of working a legislative body you understand in your bones.
+#
+#   But there's a clock. The landslide of '64 gives him a supermajority
+#   that can pass anything. The '66 midterms take 47 seats. After that,
+#   the math changes. These cards reflect that arc.
+#
+#   Mechanically, Congress touches:
+#     - lbj_capital (legislation costs it; wins restore it)
+#     - lbj_credibility (broken promises cost it)
+#     - lbj_approval (popular legislation raises it)
+#     - lbj_gs_progress (bills passed)
+#     - lbj_dixiecrats, lbj_liberals (factional management)
+#     - lbj_unity (the country watches what Congress does)
+#
+#   The '66 midterms fire as a scripted event in November 1966.
+#   After that, several cards gain new branches reflecting
+#   the harder math of a thinner majority.
+# =============================================================================
+
+# =============================================================================
+# PINNED CARD: The Legislative Calendar
+# =============================================================================
+
+@lbj_congress_calendar
+title: The Hill
+is-pinned-card: true
+card-image: img/capitol.png
+tags: lbj_country_card
+
+[? if lbj_year <= 1965 : The 89th Congress. Sixty-eight Democratic senators. Two hundred ninety-five Democratic representatives. The largest majority since FDR's first term. The window will not stay open this long. You know it and you are moving as fast as the institution allows. ?]
+
+[? if lbj_year = 1966 and lbj_ev_midterms66 = 0 : The midterms are coming. Your people tell you to be realistic about the map. You tell them to pass everything on the list before November. ?]
+
+[? if lbj_ev_midterms66 = 1 and lbj_year <= 1968 : The 90th Congress. Forty-seven fewer Democrats in the House. The math is harder now. Everything costs more than it used to. ?]
+
+**Capital:** [+ lbj_capital +] · **Great Society:** [+ lbj_gs_progress +]/10 · **CR Progress:** [+ lbj_cr_progress +]/10
+
+- @lbj_congress_calendar: *(Review the calendar)*
+
+# =============================================================================
+# CARD: The Treatment
+# LBJ works the phones. Classic Senate operator mode.
+# =============================================================================
+
+@lbj_congress_treatment
+title: The Phones
+is-card: true
+card-image: img/capitol.png
+tags: lbj_country_card
+max-visits: 8
+on-arrival: lbj_capital -= 4
+
+There is a bill that needs three more votes.
+
+There are always bills that need more votes. This is the permanent condition of legislative work, and you are better at this than any president since Roosevelt and probably better than Roosevelt in the specific techniques involved.
+
+You know what these three senators want. You know their districts. You know their donors. You know who their difficult constituents are and you know what those constituents need from the federal government and you know which of those needs you can address with a phone call.
+
+You make the calls.
+
+- @lbj_congress_treatment_hard: Push hard. Favors, promises, leverage.
+- @lbj_congress_treatment_honest: Make the policy case. Let it stand on its merits.
+
+@lbj_congress_treatment_hard
+title: The Full Treatment
+on-arrival: lbj_gs_progress += 1; lbj_capital -= 8; lbj_credibility -= 2; lbj_approval += 3
+
+You get the votes.
+
+It costs something — it always costs something — but the bill passes and the programs it funds will exist in the world and help people who needed them, and you are not going to apologize for how the sausage was made.
+
+Everett Dirksen calls afterward to congratulate you. You are not sure if he is being genuine or letting you know that he knows what you did.
+
+With Dirksen it is often both.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_treatment_honest
+title: On the Merits
+on-arrival: lbj_gs_progress += 1; lbj_credibility += 4; lbj_capital -= 6; lbj_approval += 2
+
+You make the case. You lay out the numbers. You explain why this is the right policy and why their constituents will benefit.
+
+Two of the three are persuaded. The third requires a small infrastructure commitment to a project in his district, but you consider this within the bounds of normal legislative business.
+
+The bill passes. You feel, briefly, like the system works.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: Working Dirksen
+# The Republican Senate minority leader. You need him for cloture.
+# =============================================================================
+
+@lbj_congress_dirksen
+title: Senator Dirksen
+is-card: true
+card-image: img/capitol.png
+tags: lbj_country_card
+max-visits: 4
+
+Everett McKinley Dirksen, Republican minority leader, is not your ally. He is a man who can be made to feel like a statesman, which is better than an ally.
+
+He has a magnificent voice. He is theatrical in ways that work on television and in the Senate chamber. He is genuinely conservative and genuinely capable of rising above his conservatism when the moment calls for it and the credit is distributed correctly.
+
+You need him for cloture on the Civil Rights bill. The Southern Democrats will filibuster. The math without Dirksen doesn't work.
+
+- @lbj_congress_dirksen_statesman: Make him the hero. Let him have the credit.
+- @lbj_congress_dirksen_deal: Find what he wants and give it to him.
+- @lbj_congress_dirksen_pressure: Apply pressure through the Republican caucus.
+
+@lbj_congress_dirksen_statesman
+title: The Statesman
+on-arrival: lbj_capital -= 10; lbj_cr_progress += 1; lbj_dixiecrats -= 5; lbj_liberals += 6; lbj_approval += 4; lbj_credibility += 3
+
+You let him write the narrative. His press people put out that Dirksen was the decisive vote for civil rights. You do not correct this. You do not remind anyone that you made seventy-three phone calls and called in fifteen years of favors to get to the moment where Dirksen's vote was the decisive one.
+
+He votes for cloture. The bill passes.
+
+At the signing ceremony you make sure he is in the photographs.
+
+History will give you the credit anyway. You know this and you are fine with it.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_dirksen_deal
+title: The Quid Pro Quo
+on-arrival: lbj_capital -= 14; lbj_cr_progress += 1; lbj_credibility -= 2; lbj_approval += 3; lbj_gs_progress += 1
+
+You find what he wants. It is not unreasonable — a provision in an unrelated appropriations bill, a federal judgeship, something structural about the farm program. The specifics are between you and him and they stay there.
+
+He votes for cloture. The bill passes.
+
+Legislative work is transactional. You are not embarrassed by this. You built the Social Security expansion through transactions. You built the interstate highway system through transactions. You are building the Great Society the same way.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_dirksen_pressure
+title: The Caucus
+on-arrival: lbj_capital -= 8; lbj_liberals += 3; lbj_credibility -= 3; lbj_dixiecrats -= 3
+
+You work around him. There are enough Republicans who are not Dirksen that you can build cloture without him if you're willing to do it piece by piece.
+
+Dirksen notices. He is not pleased. He is also too politically intelligent to make an enemy of the White House over this — he needs you too, for other things.
+
+The vote happens. It is closer than it needed to be.
+
+Dirksen does not attend the signing ceremony.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Rules Committee
+# The House bottleneck. Judge Smith and the legislative chokepoint.
+# =============================================================================
+
+@lbj_congress_rules
+title: Judge Smith's Committee
+is-card: true
+card-image: img/capitol.png
+tags: lbj_country_card
+view-if: lbj_year <= 1966
+max-visits: 3
+
+Howard Worth Smith, Democrat of Virginia, chairman of the House Rules Committee, has held that position since 1955. The Rules Committee controls which bills reach the floor for a vote. Howard Smith controls the Rules Committee.
+
+Howard Smith does not want your civil rights bill, your education bill, or your poverty program to reach the floor.
+
+He is not obstructing you illegally. He is using every procedural tool that the House of Representatives has accumulated in two hundred years of operation. He is very good at this. He has been doing it since before you were in Congress.
+
+- @lbj_congress_rules_maneuver: Go around him. Use the discharge petition.
+- @lbj_congress_rules_deal: Make a deal. Find something he wants.
+- @lbj_congress_rules_speaker: Work through McCormack. Let the Speaker handle it.
+
+@lbj_congress_rules_maneuver
+title: Discharge Petition
+on-arrival: lbj_gs_progress += 1; lbj_capital -= 12; lbj_dixiecrats -= 8; lbj_credibility += 3; lbj_liberals += 5
+
+A discharge petition requires 218 signatures to pull a bill out of committee. You work for six weeks to get them.
+
+Smith knows what you're doing. He makes clear that Members who sign the petition will remember it at appropriations time.
+
+You get 219 signatures.
+
+The bill reaches the floor. It passes. Judge Smith attends the vote and votes no with the dignity of a man who has been beaten by the rules he wrote.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_rules_deal
+title: Horse Trading
+on-arrival: lbj_gs_progress += 1; lbj_capital -= 15; lbj_credibility -= 2; lbj_dixiecrats += 2
+
+Judge Smith is eighty years old and has represented Virginia for thirty years. He wants certain things for Virginia. Federal projects, infrastructure, exemptions. You find things you can give him.
+
+He does not support the bill. He allows it to come to the floor.
+
+This is the distinction he insists on and it is a distinction you accept because the alternative is the discharge petition and six more weeks.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_rules_speaker
+title: McCormack
+on-arrival: lbj_capital -= 8; lbj_gs_progress += 1; lbj_liberals += 3
+
+John McCormack, Speaker of the House, has been in Congress since 1928. He is loyal. He is not inspired. He is a professional who knows what the job requires.
+
+He handles Judge Smith. You don't ask how. The bill reaches the floor.
+
+McCormack will ask for something later. He always asks for something later. You file this and move on.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# SCRIPTED EVENT: The 1966 Midterms
+# November 1966. The wave breaks.
+# =============================================================================
+
+@lbj_ev_midterms66
+title: November 1966
+is-card: true
+card-image: img/capitol.png
+on-arrival: lbj_ev_midterms66 = 1; lbj_capital -= 25; lbj_gs_progress -= 1; lbj_dixiecrats -= 8; lbj_liberals -= 5; lbj_far_right += 10; lbj_approval -= 8; lbj_unity -= 6
+view-if: lbj_year = 1966 and lbj_month = 11 and lbj_ev_midterms66 = 0
+new-page: true
+
+The results come in on Tuesday night.
+
+Forty-seven House seats. Three Senate seats. The gains the Republicans have made are the gains a party makes when it is running against a war, against inflation, against urban unrest, against the specific sense that things are not going the way the president said they were going.
+
+You watch the returns with your people and you are quiet in a way that they read correctly as: do not try to make this better right now.
+
+The 89th Congress was historic. The 89th Congress passed Medicare and Medicaid and the Voting Rights Act and the Elementary and Secondary Education Act and the Fair Housing Act and a hundred other things. The 89th Congress was a window that may not open again in this century.
+
+The 90th Congress will be different. Everything from now on will cost more. Everything from now on will take longer. The math has changed and you will spend the rest of your presidency doing the harder arithmetic.
+
+- @lbj_midterms_regroup: Regroup. The agenda continues.
+- @lbj_midterms_contract: Contract. Protect what's been built.
+
+@lbj_midterms_regroup
+title: Full Speed Ahead
+on-arrival: lbj_capital -= 8; lbj_credibility += 3; lbj_gs_progress += 1; lbj_approval += 2
+
+You tell your staff the morning after that the agenda doesn't change. You have built things that cannot be unbuilt. You are going to keep building.
+
+Some of what you attempt in the 90th Congress will fail. Some of it will pass in forms that are narrower than you wanted. None of it is easy.
+
+But you keep building, and some of it gets built, and that matters.
+
+- @lbj_main_hand: Continue
+
+@lbj_midterms_contract
+title: Consolidate
+on-arrival: lbj_gs_progress -= 1; lbj_credibility += 2; lbj_capital += 10; lbj_approval += 1
+
+You focus on protecting what exists. Medicare survives. The Voting Rights Act survives. Head Start survives. The gains from the 89th Congress are real and durable and you spend the 90th Congress making sure they stay that way.
+
+You don't build as much as you wanted to. What you built stays built.
+
+There is something to be said for that.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Budget Battle
+# Guns and butter. Congress starts asking questions.
+# =============================================================================
+
+@lbj_congress_budget
+title: The Budget
+is-card: true
+card-image: img/capitol.png
+tags: lbj_country_card
+view-if: lbj_year >= 1966 and lbj_vietnam >= 35
+max-visits: 4
+on-arrival: lbj_capital -= 5
+
+Wilbur Mills, chairman of Ways and Means, has asked for a meeting about the budget.
+
+Mills is not unfriendly. He is methodical, which in a chairman of Ways and Means is the same thing as powerful. He has a green eyeshade relationship with numbers. He has looked at the numbers and he has some questions.
+
+The questions are, essentially: you cannot fight a war at this scale and fund a domestic agenda at this scale without raising taxes or cutting something. Which is it going to be?
+
+- @lbj_congress_budget_taxhike: Support a tax surcharge. Pay for the war honestly.
+- @lbj_congress_budget_cut_gs: Cut domestic programs. The war takes priority.
+- @lbj_congress_budget_delay: Delay the reckoning. This is manageable for now.
+
+@lbj_congress_budget_taxhike
+title: The Surcharge
+on-arrival: lbj_capital -= 12; lbj_gs_progress += 1; lbj_approval -= 4; lbj_credibility += 5; lbj_labor -= 4; lbj_far_right += 3
+
+You propose a ten percent income tax surcharge to pay for the war. It is honest. It is unpopular. It is the right thing to do if you are going to fight the war you are fighting while also building the programs you are building.
+
+Mills makes you wait two years for it. He extracts spending cuts as the price. The compromise is real and painful and better than the alternative.
+
+The Great Society survives.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_budget_cut_gs
+title: Priorities
+on-arrival: lbj_capital += 5; lbj_gs_progress -= 2; lbj_poverty += 8; lbj_liberals -= 10; lbj_approval -= 5; lbj_labor -= 5
+
+You cut the domestic programs to keep the war funded at current levels.
+
+The things that get cut are real. The people who needed them are real. You know this. You make the decision anyway because the alternative — admitting the war cannot be paid for without transforming the tax base — is a political problem you are not ready to face.
+
+The liberals will not forgive this. You are not sure they are wrong.
+
+- @lbj_main_hand: Continue
+
+@lbj_congress_budget_delay
+title: Not Yet
+on-arrival: lbj_credibility -= 4; lbj_capital += 3; lbj_poverty += 4
+
+You tell Mills you will have a comprehensive proposal in the next session. You will think carefully about the options. The situation is manageable for the time being.
+
+Mills looks at you the way Wilbur Mills looks at things he does not believe.
+
+The problem does not get smaller while you are not solving it.
+
+- @lbj_main_hand: Continue
+
