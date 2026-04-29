@@ -1,0 +1,312 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_director.dry
+# Purpose: J. Edgar Hoover — The Director
+#
+# DESIGN NOTES:
+#   Hoover is not a faction. He is a system.
+#   You do not manage him. You manage your relationship to what he knows.
+#   These cards live in The Party deck because Hoover is fundamentally
+#   a political problem — he has files on everyone, including you,
+#   and the relationship is mutual leverage dressed as cooperation.
+#
+#   Mechanically, Hoover touches:
+#     - lbj_credibility (he can destroy it or protect it)
+#     - lbj_racial_tension (COINTELPRO as a pressure release valve)
+#     - lbj_antiwar (surveilling protesters, feeding you intel)
+#     - lbj_liberals (they hate him; your association costs you)
+#     - lbj_south_backlash (Hoover is popular with the right)
+#     - lbj_continuity (hidden — Hoover knows things about the military
+#       that he has never fully shared)
+#     - lbj_paranoia (his reports make you more paranoid, not less)
+#
+#   The writing register: bureaucratic. Formal. The wrongness is
+#   in the gap between the language and what it describes.
+#   Never announce the wrongness. Let it sit.
+# =============================================================================
+
+# =============================================================================
+# PINNED CARD: The Director's Status
+# =============================================================================
+
+@lbj_director_status
+title: The Director
+is-pinned-card: true
+card-image: img/director.png
+tags: lbj_party_card
+
+The Federal Bureau of Investigation has submitted [+ lbj_turn +] summaries to the White House since the beginning of this administration. The Director has not requested a meeting. He does not, as a rule, request meetings.
+
+[? if lbj_paranoia < 30 : The relationship is what it has always been. Productive. Arm's length. Professional. ?]
+
+[? if lbj_paranoia >= 30 and lbj_paranoia < 60 : The summaries have become more detailed in recent months. You are not sure if this is a change in FBI practice or a change in something else. ?]
+
+[? if lbj_paranoia >= 60 : The Director knows things you don't. He has always known things you don't. The question you have stopped asking is whether that is the same thing as being on your side. ?]
+
+- @lbj_director_status: *(Note received)*
+
+# =============================================================================
+# CARD: The Summary
+# Hoover's periodic briefings. Repeatable — he sends them constantly.
+# =============================================================================
+
+@lbj_director_summary
+title: The Summary
+is-card: true
+card-image: img/director.png
+tags: lbj_party_card
+max-visits: 6
+on-arrival: lbj_paranoia += 2
+
+The Director has sent over a summary.
+
+It is not called a report. The distinction matters to him, though he has never explained why. A report implies conclusions. A summary presents information and allows the reader to draw their own.
+
+This one is eight pages. The subject is domestic communist infiltration of certain civil rights organizations. Two names are underlined in red. There is no explanation of why those two names and not others. There is no sourcing. There is a cover note in the Director's handwriting that says: *For the President's information.*
+
+You have learned not to ask what you are supposed to do with this information.
+
+- @lbj_director_summary_file: File it. Add it to the stack.
+- @lbj_director_summary_act: Act on it. Let the Bureau do what the Bureau does.
+- @lbj_director_summary_push: Push back. Ask for sourcing.
+
+@lbj_director_summary_file
+title: Filed
+on-arrival: lbj_paranoia += 2; lbj_continuity += 1
+
+You put it in the stack with the others.
+
+Jenkins will ask about it later. You will tell him it's been handled. He will not ask what that means.
+
+- @lbj_main_hand: Continue
+
+@lbj_director_summary_act
+title: Let the Bureau Work
+on-arrival: lbj_liberals -= 5; lbj_racial_tension -= 3; lbj_south_backlash -= 2; lbj_credibility -= 3; lbj_antiwar -= 3; lbj_continuity += 2
+
+You pass the summary back with a note of your own. You do not write instructions. You write *Thank you* and your initials, which is its own kind of instruction.
+
+The Bureau understands.
+
+The two underlined names will notice, in the coming months, that certain things have become more difficult. Their mail. Their phones. Their associations. They will not be able to trace this to a specific decision, because there was no specific decision. There was only a summary and two initials.
+
+- @lbj_main_hand: Continue
+
+@lbj_director_summary_push
+title: Ask for Sourcing
+on-arrival: lbj_credibility += 3; lbj_paranoia -= 2; lbj_continuity -= 2; lbj_liberals += 3
+
+You send a note back asking for the underlying intelligence.
+
+The Director responds within the day. He thanks you for your interest. He says the sourcing is classified at a level he is not authorized to share through normal White House channels without a formal request through the Attorney General's office.
+
+Robert Kennedy is the Attorney General. You do not send the formal request through the Attorney General's office.
+
+The summary goes in the stack.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: COINTELPRO
+# The Bureau's domestic surveillance program. LBJ doesn't control it
+# but he knows it exists.
+# =============================================================================
+
+@lbj_director_cointelpro
+title: Domestic Intelligence
+is-card: true
+card-image: img/director.png
+tags: lbj_party_card
+view-if: lbj_year >= 1965
+max-visits: 3
+on-arrival: lbj_paranoia += 3
+
+The Director briefs you, verbally, on what he calls the Counterintelligence Program. He sits across from you in the Oval Office and describes it in the careful language of a man who has spent fifty years saying things that cannot be written down.
+
+The program targets communist infiltration of domestic organizations. Civil rights organizations. Anti-war organizations. Labor organizations.
+
+You ask him how many people are under active surveillance.
+
+He says he would have to check, but the number is not small.
+
+You ask him if anyone in this building is under surveillance.
+
+He holds your gaze for a moment before answering.
+
+He says: *"The Bureau's mandate is the protection of the American government and its institutions."*
+
+You say: *"That's not what I asked."*
+
+He says: *"No, sir."*
+
+There is a pause. Then the meeting continues.
+
+- @lbj_cointelpro_accept: Accept it. This is what intelligence work looks like.
+- @lbj_cointelpro_limit: Draw a line. Civil rights organizations are off-limits.
+- @lbj_cointelpro_use: Use it. The anti-war movement is a political problem.
+
+@lbj_cointelpro_accept
+title: The Price of Security
+on-arrival: lbj_racial_tension -= 4; lbj_antiwar -= 4; lbj_liberals -= 6; lbj_south_backlash -= 3; lbj_continuity += 3; lbj_paranoia += 4
+
+The program continues.
+
+You tell yourself you have not authorized it. You have simply not stopped it. You are aware this is a distinction that will not survive historical scrutiny, but historical scrutiny is not your immediate problem.
+
+Your immediate problem is keeping the country together while it tries to come apart.
+
+- @lbj_main_hand: Continue
+
+@lbj_cointelpro_limit
+title: Draw the Line
+on-arrival: lbj_liberals += 7; lbj_credibility += 4; lbj_racial_tension -= 2; lbj_continuity -= 3; lbj_paranoia -= 2
+
+You tell him directly: the civil rights organizations are off the table. You will not have King's mail being opened by federal agents. You will not have that on your conscience or your record.
+
+The Director listens. He says: *"Yes, sir."*
+
+You will find out, years later, that the program continued. That *"Yes, sir"* was the response of a man who understood that you meant what you said and had decided to do it anyway.
+
+This information will not be available to you during your presidency.
+
+- @lbj_main_hand: Continue
+
+@lbj_cointelpro_use
+title: A Useful Tool
+on-arrival: lbj_antiwar -= 8; lbj_liberals -= 10; lbj_south_backlash -= 4; lbj_continuity += 4; lbj_credibility -= 5; lbj_paranoia += 5
+
+The anti-war movement is genuinely disrupting the war effort. Foreign intelligence involvement is genuinely possible. You tell yourself these things are true because they are true.
+
+You tell the Director that the anti-war organizations are a priority.
+
+He says: *"We've been watching them for some time."*
+
+Of course he has.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Files
+# Hoover's leverage. This card is about what he knows about you.
+# =============================================================================
+
+@lbj_director_files
+title: The Files
+is-card: true
+card-image: img/director.png
+tags: lbj_party_card
+view-if: lbj_year >= 1965
+max-visits: 2
+on-arrival: lbj_paranoia += 6; lbj_continuity += 2
+
+The Director has held his position since 1924. Calvin Coolidge was president. In the forty years since, he has accumulated files on every significant figure in American public life.
+
+You know this because you have seen your own file. He showed it to you — not the contents, just the folder, the thickness of it — in a meeting early in the administration. He did not say anything about it. He did not need to.
+
+The meeting was about something else entirely. Appropriations, you think. The FBI's annual budget request.
+
+You gave him what he asked for.
+
+You think about this sometimes at 2 a.m. About what is in that folder. About what he has on Kennedy — both Kennedys. About what he has on the generals. About whether any of what he has changes anything, or whether the having of it is itself the point.
+
+*(Nothing to decide. Just something to sit with.)*
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: Hoover and King
+# The specific ugliness of the FBI's campaign against MLK.
+# =============================================================================
+
+@lbj_director_king
+title: The Tapes
+is-card: true
+card-image: img/director.png
+tags: lbj_party_card
+view-if: lbj_year >= 1964 and lbj_cr_progress >= 1
+max-visits: 2
+on-arrival: lbj_paranoia += 5
+
+The Director has sent something different this time. Not a summary. A transcript.
+
+The transcript is from surveillance of Martin Luther King Jr.'s hotel room in Washington. The content is personal. Explicitly personal.
+
+The Director has included a handwritten note: *The attached may be of interest to the President in connection with Dr. King's public activities.*
+
+You sit with this for a long time.
+
+What the Director is offering you is a weapon. A way to discredit the most important civil rights leader in the country, if you need to. If he becomes inconvenient. If his public criticism of the war becomes a political problem.
+
+What the Director is also doing is showing you that he has this. That he has been collecting it. That he collected it without being asked.
+
+- @lbj_director_king_destroy: Have it destroyed. Tell the Director to stop.
+- @lbj_director_king_keep: Keep it. You don't have to use it. But keep it.
+- @lbj_director_king_ignore: Send it back unopened. You don't want to know.
+
+@lbj_director_king_destroy
+title: Destroy It
+on-arrival: lbj_liberals += 8; lbj_credibility += 5; lbj_racial_tension -= 4; lbj_continuity -= 4; lbj_paranoia -= 3
+
+You have it destroyed and you tell the Director directly: this stops. Whatever he has been collecting, it stops.
+
+He says: *"Yes, sir."*
+
+You have the same feeling you had the last time he said that.
+
+- @lbj_main_hand: Continue
+
+@lbj_director_king_keep
+title: Insurance
+on-arrival: lbj_continuity += 4; lbj_paranoia += 6; lbj_credibility -= 4; lbj_liberals -= 5
+
+You put it in the safe.
+
+You tell yourself you will never use it. You tell yourself it is simply good to know what exists. You tell yourself a lot of things at 2 a.m.
+
+The Director, who has been doing this since 1924, has heard all of those things before.
+
+- @lbj_main_hand: Continue
+
+@lbj_director_king_ignore
+title: Return to Sender
+on-arrival: lbj_credibility += 3; lbj_paranoia -= 2; lbj_continuity += 1
+
+You send it back with a note: *Not appropriate for White House review.*
+
+It goes back to the Bureau. It stays in the files. It does not stop existing.
+
+The Director's response is a single line: *Understood, Mr. President.*
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Director and the War
+# Hoover's relationship with the military. One of the conspiracy's
+# ambient pressure points. Written to be unremarkable.
+# =============================================================================
+
+@lbj_director_military
+title: Interagency
+is-card: true
+card-image: img/director.png
+tags: lbj_party_card
+view-if: lbj_year >= 1966 and lbj_vietnam >= 30
+max-visits: 2
+on-arrival: lbj_continuity += 3; lbj_paranoia += 3
+
+The Director has been meeting with the Joint Chiefs. This is not unusual. Interagency coordination is routine. The FBI and the Defense Department have overlapping jurisdictions on domestic security matters related to the war effort.
+
+Moyers mentions it to you the way he mentions things he wants you to know without making it a formal briefing. Casual. He says the Director was at the Pentagon twice last week. He says the meetings were with Wheeler's staff.
+
+You say: *"Wheeler's"?*
+
+Moyers says yes. He says it was on the schedule as a counterintelligence coordination meeting.
+
+You say: *"Fine."*
+
+Moyers pauses before he leaves. He says: *"I just thought you should know."*
+
+You thank him.
+
+- @lbj_main_hand: Continue
+
