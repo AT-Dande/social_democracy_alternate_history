@@ -1,0 +1,311 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_civil_rights.dry
+# Purpose: Civil Rights deck — cards, choices, consequences
+# =============================================================================
+
+# =============================================================================
+# PINNED CARD: Civil Rights Movement Status
+# Always visible; tracks the pulse of the movement
+# =============================================================================
+
+@lbj_cr_status
+title: The Movement
+is-pinned-card: true
+card-image: img/cr_status.png
+tags: lbj_cr_card
+
+[? if lbj_cr_progress = 0 : The civil rights movement is marching. It has been marching. It will continue to march whether you help it or not. The question is whether you get ahead of it or get run over by it. ?]
+
+[? if lbj_cr_progress >= 1 and lbj_cr_progress < 4 : Legislation is moving. The movement knows it — they're not satisfied, but they're watching. King has not yet called you a disappointment in public. ?]
+
+[? if lbj_cr_progress >= 4 and lbj_cr_progress < 7 : You have done more for civil rights than any president since Lincoln. The history books will say that. The Southern delegations will not forgive it. ?]
+
+[? if lbj_cr_progress >= 7 : The arc of the moral universe. You have bent it. At a cost you are still counting. ?]
+
+**Racial Tension:** [+ lbj_racial_tension +] · **Southern Backlash:** [+ lbj_south_backlash +] · **CR Progress:** [+ lbj_cr_progress +]
+
+- @lbj_cr_status: *(Review status)*
+
+# =============================================================================
+# CARD: Push the Civil Rights Act
+# =============================================================================
+
+@lbj_cr_push_cra
+title: The Civil Rights Act
+is-card: true
+card-image: img/cra_card.png
+tags: lbj_cr_card
+view-if: lbj_ev_cra64 = 0 and lbj_year <= 1964
+max-visits: 3
+
+Kennedy put it before Congress. It is going nowhere. The Southern senators have their filibuster positions picked out. They have been preparing for this moment for a decade.
+
+You have the votes, maybe, if you work every phone in this building. You have Russell. You have Dirksen on the Republican side, if you can make him feel like a statesman rather than a collaborator.
+
+What you don't have is time. The movement is not going to wait for parliamentary procedure.
+
+- @lbj_cr_push_cra_hard: Push hard. Call every senator personally. This is your legacy.
+- @lbj_cr_push_cra_moderate: Work the middle. Find the version that can pass.
+- @lbj_cr_push_cra_delay: Focus on other priorities first. The Act can wait.
+
+@lbj_cr_push_cra_hard
+title: The Full Push
+on-arrival: lbj_capital -= 18; lbj_dixiecrats -= 12; lbj_liberals += 8; lbj_labor += 5; lbj_south_backlash += 10; lbj_racial_tension -= 8; lbj_credibility += 5
+
+You call forty-three senators in seventy-two hours. You are not above begging. You have never been above begging.
+
+Russell tells you you're making a mistake. You tell him history is going to prove you right, and he says history isn't running for anything in 1964. You say you are.
+
+The bill is stronger for the fight. Your southern support is not.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_push_cra_moderate
+title: The Art of the Possible
+on-arrival: lbj_capital -= 10; lbj_dixiecrats -= 6; lbj_liberals += 4; lbj_south_backlash += 6; lbj_racial_tension -= 4; lbj_credibility += 2
+
+Compromise is not a dirty word. You have been compromising since you were a county administrator.
+
+The bill that emerges is not perfect. The movement will not say it is perfect. But it will be law. It will have teeth. It will be something.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_push_cra_delay
+title: Not Yet
+on-arrival: lbj_liberals -= 8; lbj_racial_tension += 6; lbj_credibility -= 4; lbj_jfk_shadow += 8
+
+Kennedy promised it. You are promising it. The difference between a promise and a bill is, at the moment, everything.
+
+The movement does not forget. You are building a tab you will eventually have to pay.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: King at the White House
+# =============================================================================
+
+@lbj_cr_king_meeting
+title: Dr. King
+is-card: true
+card-image: img/king_card.png
+tags: lbj_cr_card
+max-visits: 4
+
+He is not easy to be in a room with. That is not a complaint — easy men do not lead movements.
+
+He has that quality of knowing he is on the right side of history and knowing you know it too, and watching you calculate the political cost anyway. It should make you feel small. It does make you feel small. You do not show it.
+
+He wants more than you have given. He always wants more. That is his job.
+
+- @lbj_cr_king_ally: Make him an ally. Give him access and make it real.
+- @lbj_cr_king_arm: Keep him at arm's length. Useful, not intimate.
+- @lbj_cr_king_fbi: Let Hoover do what Hoover does.
+
+@lbj_cr_king_ally
+title: An Alliance
+on-arrival: lbj_liberals += 7; lbj_racial_tension -= 5; lbj_cr_progress += 1; lbj_dixiecrats -= 4; lbj_south_backlash += 5; lbj_capital -= 8
+
+You give him your direct number. You mean it when you say it. He will call it.
+
+The Southern press will have a field day. Russell will give you a look across the Senate chamber that contains an entire editorial.
+
+You have needed worse enemies.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_king_arm
+title: Managed Distance
+on-arrival: lbj_liberals += 2; lbj_racial_tension -= 2; lbj_jfk_shadow += 3
+
+Productive meeting. Warm but not effusive. You commit to the process without committing to specifics.
+
+He leaves knowing he hasn't gotten what he came for. You both know it. These meetings have a grammar of their own.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_king_fbi
+title: Hoover's Files
+on-arrival: lbj_south_backlash -= 3; lbj_liberals -= 10; lbj_credibility -= 6; lbj_coup += 3; lbj_paranoia += 4
+
+Hoover has been watching King for years. The files exist. The surveillance is ongoing.
+
+You don't order anything. You simply don't order it stopped. There is a difference. There is always a difference. You are not sure, at 2 a.m., that anyone else can see it.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: Freedom Summer / Mississippi Burning
+# =============================================================================
+
+@lbj_cr_freedom_summer
+title: Mississippi
+is-card: true
+card-image: img/mississippi_card.png
+tags: lbj_cr_card
+view-if: lbj_year = 1964
+max-visits: 1
+
+Three young men are missing in Mississippi. Chaney, Goodman, Schwerner. Everyone knows what happened. Nobody in Mississippi is in any hurry to find them.
+
+The FBI is involved, technically. J. Edgar Hoover is involved the way Hoover is involved in things — meaning he is gathering information, and that information is going into files, and the files are going places that are not courts of law.
+
+The country is watching. The cameras are down there. The question is what you say.
+
+- @lbj_cr_fs_federal: Send federal resources. Make it a federal case.
+- @lbj_cr_fs_rhetoric: Speak forcefully. Let the system work.
+- @lbj_cr_fs_quiet: Handle it quietly. Don't escalate.
+
+@lbj_cr_fs_federal
+title: Federal Power
+on-arrival: lbj_capital -= 12; lbj_dixiecrats -= 14; lbj_liberals += 9; lbj_racial_tension -= 6; lbj_unity += 3; lbj_south_backlash += 12; lbj_credibility += 4
+
+You send every available agent. You call the governor directly and you are not polite about it.
+
+The bodies are found in August. The country mourns. Mississippi does not change overnight, but the calculus has shifted — now everyone knows the federal government means it.
+
+Your southern colleagues do not forgive this. You did not expect them to.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_fs_rhetoric
+title: Moral Clarity
+on-arrival: lbj_credibility += 2; lbj_liberals += 4; lbj_racial_tension -= 2; lbj_capital -= 3
+
+You give a speech. It is a good speech. Words matter.
+
+The bodies are found in August. The speech is in the record. The families bury their sons.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_fs_quiet
+title: Back Channels
+on-arrival: lbj_dixiecrats += 3; lbj_liberals -= 8; lbj_credibility -= 5; lbj_racial_tension += 4; lbj_jfk_shadow += 5
+
+You make calls. Quiet ones. You lean on the governor through intermediaries.
+
+The bodies are found in August. You are not associated with finding them. You are not associated with anything.
+
+The movement notices. They are keeping score.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# CARD: The Voting Rights Act
+# =============================================================================
+
+@lbj_cr_vra
+title: Selma
+is-card: true
+card-image: img/selma_card.png
+tags: lbj_cr_card
+view-if: lbj_ev_cra64 = 1 and lbj_year >= 1965
+max-visits: 2
+
+The images from the Edmund Pettus Bridge are on every television in America. State troopers. Clubs. Tear gas. People in their Sunday best being beaten on a bridge named for a Klan grand wizard.
+
+You have a decision. The Voting Rights Act has been sitting in committee.
+
+You know what you're going to do. You have known since you watched the footage at 11 o'clock last night, alone in the residence, with the sound turned down. The question is how you do it.
+
+- @lbj_cr_vra_congress: Address a joint session of Congress. Make it historic.
+- @lbj_cr_vra_executive: Move by executive order where possible. Faster.
+- @lbj_cr_vra_wait: Wait for calmer political conditions.
+
+@lbj_cr_vra_congress
+title: We Shall Overcome
+on-arrival: lbj_ev_vra65 = 1; lbj_cr_progress += 2; lbj_capital -= 20; lbj_dixiecrats -= 18; lbj_liberals += 12; lbj_unity += 6; lbj_south_backlash += 16; lbj_racial_tension -= 12; lbj_credibility += 8; lbj_jfk_shadow -= 10
+
+*"We shall overcome."*
+
+You say it. You, Lyndon Baines Johnson of Johnson City, Texas, son of the Hill Country, say those words to a joint session of Congress and to forty million people watching at home. You let the pause sit before you say it, so everyone knows you know what you're saying.
+
+Forty years from now, they will teach this speech in schools.
+
+Tonight, Russell leaves without speaking to you.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_vra_executive
+title: Executive Action
+on-arrival: lbj_ev_vra65 = 1; lbj_cr_progress += 1; lbj_capital -= 10; lbj_dixiecrats -= 8; lbj_liberals += 6; lbj_racial_tension -= 7; lbj_south_backlash += 8
+
+You push what you can push through existing authority and lean hard on Congress for the rest. It passes, somewhat quieter than it might have.
+
+Quieter, perhaps, than it should have been. The moment called for more than you gave it.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_cr_vra_wait
+title: Not the Right Moment
+on-arrival: lbj_liberals -= 12; lbj_racial_tension += 9; lbj_credibility -= 7; lbj_jfk_shadow += 10; lbj_capital += 5
+
+The moment passes. Moments always pass.
+
+The bill will come back. The Selma footage will air again, on anniversaries, in documentaries. People will remember when it happened and they will remember that you waited.
+
+- @lbj_main_hand: Back to the Oval Office
+
+# =============================================================================
+# SCRIPTED EVENT: Watts, August 1965
+# =============================================================================
+
+@lbj_ev_watts_trigger
+title: Los Angeles Burns
+is-card: true
+card-image: img/watts_card.png
+on-arrival: lbj_ev_watts = 1; lbj_racial_tension += 18; lbj_unity -= 8; lbj_far_right += 8; lbj_south_backlash += 6
+go-to: lbj_ev_watts_scene
+
+@lbj_ev_watts_scene
+title: Watts
+new-page: true
+
+The Voting Rights Act is six days old.
+
+Watts is on fire. Not metaphorically. Thirty-four people will die. More than a thousand will be injured. The National Guard is deploying into an American city that looks, on the news footage, like a war zone.
+
+You have just signed the most important civil rights legislation in a century. And the cities are burning.
+
+You are told — by advisors who are very careful about how they say it — that these are not the same people who marched in Selma. This is frustration, poverty, police brutality that has nothing to do with voting rights and everything to do with the Watts in which people actually live.
+
+You know they are right. You know this is what you have been trying to address with the Great Society programs. You also know that the footage is on television, and it is going to mean something to voters that it did not mean before.
+
+- @lbj_ev_watts_respond_force: Deploy National Guard. Restore order first.
+- @lbj_ev_watts_respond_understand: Address the root causes publicly.
+- @lbj_ev_watts_respond_kerner: Commission a study. Understand before acting.
+
+@lbj_ev_watts_respond_force
+title: Order First
+on-arrival: lbj_racial_tension -= 8; lbj_unity += 4; lbj_liberals -= 7; lbj_far_right -= 4; lbj_south_backlash -= 3
+
+Order is restored. The fires go out. You are resolute in the press.
+
+The underlying conditions that caused Watts are unchanged. You know this. The press does not particularly want to discuss this. The far right does not believe this.
+
+There will be other Watts.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_ev_watts_respond_understand
+title: The Deeper Fire
+on-arrival: lbj_racial_tension -= 4; lbj_liberals += 5; lbj_far_right += 5; lbj_unity -= 3; lbj_gs_progress += 1
+
+You speak about poverty, about housing, about the unfinished work of the Great Society. You are not wrong. You will be accused of excusing lawlessness. You do not excuse it. You explain it.
+
+The distinction will be debated for decades. In the meantime, you find funding for Watts.
+
+- @lbj_main_hand: Back to the Oval Office
+
+@lbj_ev_watts_respond_kerner
+title: Commission
+on-arrival: lbj_capital -= 5; lbj_racial_tension -= 3; lbj_liberals += 3
+
+You create a commission. Governor Kerner of Illinois will chair it.
+
+In two years, it will tell you what you already know: America is moving toward two societies, separate and unequal. The report will be a bestseller. Congress will do almost nothing about it.
+
+For now, it buys time and demonstrates seriousness.
+
+- @lbj_main_hand: Back to the Oval Office
+
