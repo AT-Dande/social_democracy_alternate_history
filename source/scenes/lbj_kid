@@ -1,0 +1,339 @@
+# =============================================================================
+# THE WEIGHT OF OFFICE: LBJ 1963–1969
+# File: lbj_kid.dry
+# Purpose: Robert F. Kennedy — The Kid
+#
+# DESIGN NOTES:
+#   RFK has three distinct phases that the cards reflect:
+#
+#   Phase 1 — Attorney General (Nov 1963 – Jan 1965):
+#     Still in the cabinet. Grief-stricken. Resentful. He is the most
+#     powerful reminder in Washington of what you are not.
+#     Cards are about the specific awkwardness of governing through
+#     someone who thinks the office should be his brother's still.
+#
+#   Phase 2 — Senator from New York (Jan 1965 – Dec 1967):
+#     He has his own base now. He gives speeches. He is popular in ways
+#     that make your people nervous. The rivalry is coded — neither of
+#     you will say it out loud — but everyone can see it.
+#
+#   Phase 3 — The Rival (Jan 1968 – June 1968):
+#     He announces in March. He is running against you, or against your
+#     policies, or against the war. The distinction doesn't matter.
+#     This ends in Los Angeles in June.
+#
+#   Mechanically, RFK touches:
+#     - lbj_jfk_shadow (higher shadow = more power to RFK)
+#     - lbj_liberals (his base overlaps with yours)
+#     - lbj_capital (fighting him costs resources)
+#     - lbj_credibility (he damages it when he's right)
+#     - lbj_antiwar (he becomes the anti-war candidate)
+#     - lbj_unity (after June 1968, his death damages unity severely)
+# =============================================================================
+
+# =============================================================================
+# PHASE 1: THE ATTORNEY GENERAL
+# view-if: lbj_year = 1963 or lbj_year = 1964
+# =============================================================================
+
+@lbj_kid_ag_grief
+title: The Attorney General
+is-card: true
+card-image: img/kid.png
+tags: lbj_party_card
+view-if: lbj_year <= 1964
+max-visits: 3
+on-arrival: lbj_jfk_shadow += 3; lbj_paranoia += 2
+
+He is still in the Cabinet.
+
+This is, technically, fine. Continuity of government. You kept the Kennedy cabinet because it was the right thing to do and also because firing them all in the first week would have looked like what it was. You are building your own team gradually, the way you build anything — one piece at a time, without announcing it.
+
+Robert Kennedy runs the Justice Department. He attends Cabinet meetings. He sits across from you and he looks at you the way he has always looked at you, which is the way a man looks at something he has not yet decided what to do about.
+
+He is thirty-eight years old. He is the most powerful Attorney General in the country's history, and he knows it, and he is in grief so total that it has changed the shape of his face.
+
+You do not know what to do with him. That is the truth of it.
+
+- @lbj_kid_ag_reach: Reach out. Try to make it work.
+- @lbj_kid_ag_distance: Keep your distance. Give each other space.
+- @lbj_kid_ag_task: Give him something important to do. Focus is mercy.
+
+@lbj_kid_ag_reach
+title: An Overture
+on-arrival: lbj_jfk_shadow -= 5; lbj_liberals += 4; lbj_capital -= 5; lbj_paranoia -= 3
+
+You invite him to the residence. Not a formal meeting — dinner, just the two of you, the kind of thing that would have been unthinkable six months ago.
+
+It is uncomfortable in the way that necessary things are uncomfortable. You talk about the Civil Rights Act. You talk about the poverty program. You do not talk about Dallas. You do not talk about the primary race that everyone in Washington has already started calculating.
+
+At the end of the evening he says: *"He would have wanted this to work."*
+
+You say: *"I know."*
+
+You are both telling the truth, and it is not enough, and you both know that too.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_ag_distance
+title: Managed Distance
+on-arrival: lbj_jfk_shadow += 4; lbj_paranoia += 2
+
+The relationship continues on its current terms. Professional. Formally correct. The specific hostility between you is well-managed enough that only people who know Washington very well can see it.
+
+This is most people in Washington.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_ag_task
+title: Put Him to Work
+on-arrival: lbj_jfk_shadow -= 3; lbj_liberals += 3; lbj_capital -= 7; lbj_paranoia -= 2
+
+You ask him to take on organized crime. Full resources, full priority, his name on it. It is the thing he cares most about after civil rights, and it is genuinely important, and it gives him somewhere to put the energy.
+
+He accepts. He is good at it — he has always been good at the work, even when the work was working against you.
+
+For a few months, it is almost something like a working relationship.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Departure
+# RFK leaves the cabinet to run for Senate. Scripted, mid-1964.
+# =============================================================================
+
+@lbj_kid_senate_bid
+title: New York
+is-card: true
+card-image: img/kid.png
+tags: lbj_party_card
+view-if: lbj_year = 1964 and lbj_month >= 8
+max-visits: 1
+on-arrival: lbj_liberals -= 3; lbj_jfk_shadow += 5; lbj_capital += 5
+
+He is going to run for Senate from New York.
+
+He was never really from New York. He grew up in Massachusetts, went to school in Virginia. New York is a vehicle. Everyone knows it is a vehicle. The New York press is being polite about this, which tells you everything about where things stand.
+
+He will win. You know he will win. The question is what a Senator Kennedy does with the platform he's about to acquire.
+
+- @lbj_kid_senate_support: Endorse him publicly. Be generous.
+- @lbj_kid_senate_neutral: Stay out of it. New York is his race.
+- @lbj_kid_senate_cold: Make it known you have no particular interest in the outcome.
+
+@lbj_kid_senate_support
+title: Endorsement
+on-arrival: lbj_jfk_shadow -= 8; lbj_liberals += 8; lbj_capital -= 8
+
+You campaign for him in New York. You say the right things. You are, at this moment, genuinely trying.
+
+He wins. He sends a thank-you note that is correct in every particular and warm in none of them.
+
+You frame it, mentally, as a deposit. Something you can draw on later. You are not sure this is the right way to think about it.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_senate_neutral
+title: Let It Be
+on-arrival: lbj_jfk_shadow += 2; lbj_liberals -= 2
+
+He wins. New York sends its regards.
+
+The thank-you note does not arrive.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_senate_cold
+title: Distance
+on-arrival: lbj_jfk_shadow += 5; lbj_liberals -= 6; lbj_capital += 3
+
+Your neutrality is noted. In certain circles it is described as something else. You do not correct the description.
+
+He wins anyway. He always wins anyway. That is the thing about the Kennedys — they win even when you are not helping them.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# PHASE 2: THE SENATOR
+# view-if: lbj_year >= 1965 and lbj_year <= 1967
+# =============================================================================
+
+@lbj_kid_senator_speech
+title: Senator Kennedy's Remarks
+is-card: true
+card-image: img/kid.png
+tags: lbj_party_card
+view-if: lbj_year >= 1965 and lbj_year <= 1967
+max-visits: 4
+on-arrival: lbj_jfk_shadow += 3
+
+He gives a speech. He gives a lot of speeches. He is very good at speeches, which is something you acknowledge privately and will not say in public.
+
+This one is about poverty. About the conditions in Bedford-Stuyvesant. About what the Great Society has and hasn't done. He is careful — he says nothing that is directly critical of your administration. He praises the intentions. He asks whether the execution matches them.
+
+Your people call it a veiled attack. Your people are correct.
+
+The crowd — it is always a crowd now, wherever he goes — responds in the way that crowds respond to him. With something that is not quite political support and is not quite something else.
+
+- @lbj_kid_speech_ignore: Ignore it. Don't give it oxygen.
+- @lbj_kid_speech_respond: Have someone respond. Correct the record.
+- @lbj_kid_speech_engage: Reach out to him directly. Find common ground.
+
+@lbj_kid_speech_ignore
+title: No Comment
+on-arrival: lbj_jfk_shadow += 2; lbj_liberals -= 2
+
+The speech gets covered. It gets covered the way he gets covered — extensively, favorably, with photographs.
+
+You do not say anything about it. Your silence is interpreted as either dignity or weakness, depending on who is doing the interpreting.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_speech_respond
+title: The Record
+on-arrival: lbj_capital -= 5; lbj_credibility -= 2; lbj_liberals -= 4; lbj_jfk_shadow += 4
+
+A spokesperson provides the numbers. The Great Society spending figures. The poverty rate decline. The legislation passed.
+
+The numbers are real. The numbers are correct. The numbers do not change the photograph of him in Bedford-Stuyvesant with his jacket off and his sleeves rolled up.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_speech_engage
+title: A Phone Call
+on-arrival: lbj_jfk_shadow -= 5; lbj_liberals += 5; lbj_capital -= 8
+
+You call him.
+
+The conversation is careful on both sides. You talk about what is working in the poverty program and what isn't. He has ideas — good ideas, some of them — about the community action boards. You listen.
+
+At the end he says: *"Thank you for calling, Mr. President."*
+
+Not *Lyndon*. Not even *sir*. *Mr. President.*
+
+You say: *"Thank you, Bobby."*
+
+You do not know why you say *Bobby*. You regret it immediately.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# CARD: The Kid on Vietnam
+# RFK's growing opposition to the war. The turn.
+# =============================================================================
+
+@lbj_kid_vietnam
+title: A Break
+is-card: true
+card-image: img/kid.png
+tags: lbj_party_card
+view-if: lbj_year >= 1966 and lbj_vietnam >= 35
+max-visits: 2
+on-arrival: lbj_antiwar += 6; lbj_liberals -= 5; lbj_jfk_shadow += 6
+
+Senator Kennedy has made a statement on Vietnam.
+
+He has not called for withdrawal. He is too careful for that. He has called for a negotiated settlement, for a halt to the bombing, for a reassessment of the strategy. He has used the word *"stalemate"* twice, which is not an accident.
+
+The statement gets a full page in the Times. It gets three minutes on the evening news. Westmoreland, briefed on it, says nothing. McNamara, briefed on it, says it is unhelpful.
+
+Your press secretary asks how you want to respond.
+
+- @lbj_kid_vietnam_dismiss: Dismiss it. He's playing politics with soldiers' lives.
+- @lbj_kid_vietnam_concede: Acknowledge the concern. Don't concede the argument.
+- @lbj_kid_vietnam_absorb: Begin moving policy in his direction. Get ahead of it.
+
+@lbj_kid_vietnam_dismiss
+title: Playing Politics
+on-arrival: lbj_credibility -= 4; lbj_liberals -= 6; lbj_antiwar += 4; lbj_military -= 4; lbj_south_backlash -= 3
+
+You say, through your press secretary, that the Senator is entitled to his views, and that you hope he will consider the impact his words have on the men in the field.
+
+This is a mistake and you know it while you are saying it. You have just handed him a story about a president who responds to policy criticism by questioning a man's patriotism.
+
+He responds graciously, which is worse.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_vietnam_concede
+title: Concerns Noted
+on-arrival: lbj_credibility += 2; lbj_liberals += 2; lbj_antiwar -= 2; lbj_jfk_shadow -= 2
+
+You say that you take all serious voices seriously and that the administration is constantly evaluating its approach.
+
+This satisfies no one and antagonizes no one. It is the response of a man running for re-election from the center, which is what you are.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_vietnam_absorb
+title: Get Ahead of It
+on-arrival: lbj_vietnam -= 5; lbj_antiwar -= 5; lbj_liberals += 6; lbj_military += 5; lbj_continuity += 3; lbj_jfk_shadow -= 5; lbj_capital -= 10
+
+You begin moving on the policy before he can define the contrast. Bombing pauses. Back-channel contacts. Language about negotiation that is real rather than rhetorical.
+
+He has less to run against. This frustrates him in ways that, privately, you enjoy.
+
+The Joint Chiefs receive the policy shift with a stillness you have learned to read.
+
+- @lbj_main_hand: Continue
+
+# =============================================================================
+# PHASE 3: THE RIVAL
+# view-if: lbj_year = 1968
+# =============================================================================
+
+@lbj_kid_rival_announcement
+title: March 16
+is-card: true
+card-image: img/kid.png
+tags: lbj_party_card
+view-if: lbj_year = 1968 and lbj_month >= 3 and lbj_ev_rfk = 0
+max-visits: 1
+on-arrival: lbj_liberals -= 12; lbj_antiwar -= 8; lbj_capital -= 15; lbj_jfk_shadow += 15; lbj_approval -= 5
+
+He has announced.
+
+Robert Francis Kennedy, Senator from New York, has announced his candidacy for the Democratic presidential nomination. He says he is running because of the crisis in Vietnam, because of the divisions in the country, because of the crisis in the cities.
+
+He says: *"I do not run for the presidency merely to oppose any man."*
+
+Everyone in Washington understands who the man is.
+
+You watch the announcement coverage alone, which is not something you often do. He is forty-two years old. He looks, in the press conference lights, exactly like his brother.
+
+- @lbj_kid_fight: Fight him for the nomination. This is your party.
+- @lbj_kid_step_aside: Consider whether this is the moment to step aside.
+
+@lbj_kid_fight
+title: My Party
+on-arrival: lbj_capital -= 20; lbj_liberals -= 8; lbj_unity -= 6; lbj_approval -= 3; lbj_jfk_shadow += 8
+
+You fight.
+
+The primaries will be brutal. Wisconsin is already looking bad. Indiana is complicated. California will be the test.
+
+Your people tell you that you can win the nomination. They may be right. The question — the question you are sitting with at 2 a.m. — is what winning the nomination looks like in a country that is this divided, in a year that has already had Memphis and is going to have more.
+
+You fight. For now.
+
+- @lbj_main_hand: Continue
+
+@lbj_kid_step_aside
+title: March 31
+on-arrival: lbj_jfk_shadow -= 20; lbj_approval += 8; lbj_liberals += 6; lbj_unity += 6; lbj_antiwar -= 10; lbj_capital += 20
+new-page: true
+
+On the evening of March 31 you address the nation.
+
+You talk about Vietnam. You talk about the bombing halt. You talk about negotiations.
+
+And then: *"I shall not seek, and I will not accept, the nomination of my party for another term as your President."*
+
+Lady Bird exhales beside you in a way she has been waiting months to exhale.
+
+Bobby Kennedy will win California in June. He will be shot in the kitchen of the Ambassador Hotel at 12:15 a.m. He will die twenty-six hours later.
+
+You will have left the race before any of that happened. This will not make it easier.
+
+- @lbj_main_hand: The final months
+
